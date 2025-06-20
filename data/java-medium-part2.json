@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-medium-026",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain the difference between `map` and `flatMap` in the Stream API.",
+    "answer": "`map` transforms each element of a stream into one other element (a one-to-one transformation). `flatMap` transforms each element into a stream of other elements, and then \"flattens\" all the resulting streams into a single stream (a one-to-many transformation)."
+  },
+  {
+    "id": "java-medium-027",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a reduction operation in Streams? Give an example.",
+    "answer": "An operation that takes a sequence of input elements and combines them into a single summary result. The `reduce()` method is the general-purpose reduction operation. Summing numbers in a stream is a common example."
+  },
+  {
+    "id": "java-medium-028",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between `findFirst()` and `findAny()` in Streams?",
+    "answer": "`findFirst()` returns the first element of the stream. `findAny()` returns any element of the stream, which can be more performant in parallel streams as it doesn't have to respect the encounter order."
+  },
+  {
+    "id": "java-medium-029",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How does short-circuiting work in Streams? Name two short-circuiting operations.",
+    "answer": "Short-circuiting operations can produce a result without processing all the elements of the stream. Examples include `anyMatch`, `allMatch`, `noneMatch`, `findFirst`, `findAny`, and `limit`."
+  },
+  {
+    "id": "java-medium-030",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are the primitive-specialized stream types? Why are they useful?",
+    "answer": "`IntStream`, `LongStream`, and `DoubleStream`. They are useful for performance because they work directly with primitive types, avoiding the overhead of boxing and unboxing to wrapper classes like `Integer`."
+  },
+  {
+    "id": "java-medium-031",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the purpose of the `Collectors` class?",
+    "answer": "It provides a set of static factory methods for creating `Collector` instances, which are used with the `stream.collect()` method to perform complex reduction tasks, like creating collections, summarizing data, or grouping elements."
+  },
+  {
+    "id": "java-medium-032",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How would you group a list of employees by their department using Streams?",
+    "answer": "By using the `Collectors.groupingBy()` collector. Example: `employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));`."
+  },
+  {
+    "id": "java-medium-033",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How would you partition a list of students into those who passed and those who failed?",
+    "answer": "By using the `Collectors.partitioningBy()` collector, which takes a predicate and returns a `Map<Boolean, List<Student>>`."
+  },
+  {
+    "id": "java-medium-034",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a `Spliterator`?",
+    "answer": "A \"splittable iterator\" used by streams internally for parallel processing. It can traverse elements one by one or be split into parts to be processed in parallel."
+  },
+  {
+    "id": "java-medium-035",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Can you create an infinite stream? How?",
+    "answer": "Yes, using `Stream.iterate()` or `Stream.generate()`. For example, `Stream.iterate(0, n -> n + 2)` creates an infinite stream of even numbers. You must use a short-circuiting operation like `limit()` to terminate it."
+  },
+  {
+    "id": "java-medium-036",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between `Optional.of()` and `Optional.ofNullable()`?",
+    "answer": "`Optional.of(value)` requires the value to be non-null and will throw a `NullPointerException` if it is null. `Optional.ofNullable(value)` allows the value to be null, returning an empty `Optional` in that case."
+  },
+  {
+    "id": "java-medium-037",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How can you get a value from an `Optional`? What is the safe way?",
+    "answer": "You can use `get()`, but it throws an exception if the optional is empty. Safer ways include `orElse(defaultValue)`, `orElseGet(supplier)`, `orElseThrow()`, or checking with `isPresent()` first."
+  },
+  {
+    "id": "java-medium-038",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the purpose of the `flatMap` method on `Optional`?",
+    "answer": "It allows you to perform a mapping from one `Optional` to another without creating a nested `Optional<Optional<T>>`. It's useful for chaining operations that return `Optional`."
+  },
+  {
+    "id": "java-medium-039",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Nashorn JavaScript engine? (Java 8)",
+    "answer": "A high-performance JavaScript runtime engine that was included in Java 8 to replace the older Rhino engine. It allowed embedding JavaScript code within Java applications. (Note: It was deprecated in Java 11 and removed in Java 15)."
+  },
+  {
+    "id": "java-medium-040",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `StringJoiner` class?",
+    "answer": "A utility class used to construct a sequence of characters separated by a delimiter, with optional prefix and suffix. It's often used internally by `Collectors.joining()`."
+  },
+  {
+    "id": "java-medium-041",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `Base64` class?",
+    "answer": "A class providing static methods for Base64 encoding and decoding, which is a standard way to represent binary data in an ASCII string format."
+  },
+  {
+    "id": "java-medium-042",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a `StampedLock`?",
+    "answer": "A more advanced lock than `ReentrantReadWriteLock`. It supports read, write, and optimistic read modes. Optimistic reads are very fast but require validation before using the data."
+  },
+  {
+    "id": "java-medium-043",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `CompletableFuture.thenApply()` method?",
+    "answer": "It chains a new action that runs when the `CompletableFuture` completes. It takes the result of the first stage, applies a `Function` to it, and returns a new `CompletableFuture` with the transformed result."
+  },
+  {
+    "id": "java-medium-044",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between `thenApply()` and `thenCompose()`?",
+    "answer": "Both are used for chaining. `thenApply()` applies a simple function (`T -> U`). `thenCompose()` is used when the chaining function itself returns a `CompletableFuture` (`T -> CompletableFuture<U>`), allowing you to flatten the result and avoid a nested `CompletableFuture<CompletableFuture<U>>`."
+  },
+  {
+    "id": "java-medium-045",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you handle exceptions in a `CompletableFuture`?",
+    "answer": "By using methods like `exceptionally()`, which provides a value in case of an exception, or `handle()`, which processes both the result and the exception."
+  },
+  {
+    "id": "java-medium-046",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the primary goal of the Java Platform Module System (JPMS)? (Java 9)",
+    "answer": "To provide reliable configuration and strong encapsulation. It allows developers to break down large applications into smaller, manageable modules, explicitly defining their dependencies (`requires`) and what they export (`exports`)."
+  },
+  {
+    "id": "java-medium-047",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `module-info.java` file?",
+    "answer": "A module descriptor file placed at the root of a module's source code. It declares the module's name, its dependencies, and the packages it makes available to other modules."
+  },
+  {
+    "id": "java-medium-048",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between `requires` and `requires transitive` in a module descriptor?",
+    "answer": "`requires` makes a module's exported packages available to the current module. `requires transitive` makes them available to the current module AND to any other module that depends on the current module."
+  },
+  {
+    "id": "java-medium-049",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `jlink` tool? (Java 9)",
+    "answer": "A tool used to assemble and optimize a set of modules and their dependencies into a custom, minimal runtime image. This is useful for creating smaller deployments."
+  },
+  {
+    "id": "java-medium-050",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain the `var` keyword's limitations. (Java 10)",
+    "answer": "`var` cannot be used for member variables, method parameters, return types, or `catch` clauses. It also cannot be initialized to `null` without a type cast, as the type cannot be inferred."
+  }
+]

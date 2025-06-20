@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-medium-001",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain the difference between `ArrayList` and `LinkedList`. When would you use each?",
+    "answer": "`ArrayList` is backed by a dynamic array, providing fast O(1) random access. `LinkedList` is backed by a node-based list, providing fast O(1) insertions and deletions at the beginning or end. Use `ArrayList` for read-heavy operations and `LinkedList` for write-heavy operations where elements are frequently added or removed from the ends."
+  },
+  {
+    "id": "java-medium-002",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain the difference between `HashMap`, `LinkedHashMap`, and `TreeMap`.",
+    "answer": "`HashMap` makes no guarantees about iteration order. `LinkedHashMap` maintains insertion order. `TreeMap` maintains natural sorting order (or a custom order via a `Comparator`)."
+  },
+  {
+    "id": "java-medium-003",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the contract between `equals()` and `hashCode()`?",
+    "answer": "1. If two objects are equal according to `equals()`, they must have the same `hashCode()`. 2. If two objects have the same `hashCode()`, they are not required to be equal (this is a hash collision). 3. The `hashCode()` of an object must not change during an application's execution if its `equals()` comparison information is not modified."
+  },
+  {
+    "id": "java-medium-004",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between an abstract class and an interface?",
+    "answer": "An abstract class can have constructors, instance variables, and methods with any access modifier. A class can only extend one abstract class. An interface can only have `public static final` variables and (since Java 8) `default` and `static` methods. A class can implement multiple interfaces."
+  },
+  {
+    "id": "java-medium-005",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the diamond problem and how does Java 8 handle it?",
+    "answer": "The diamond problem occurs when a class inherits from two interfaces that have default methods with the same signature. The implementing class must explicitly override the method and choose which implementation to use (e.g., `MyInterface.super.myMethod();`)."
+  },
+  {
+    "id": "java-medium-006",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain checked vs. unchecked exceptions.",
+    "answer": "Checked exceptions are checked at compile-time (e.g., `IOException`), and the compiler forces you to handle them with a `try-catch` block or declare them with `throws`. Unchecked exceptions (RuntimeExceptions, e.g., `NullPointerException`) are not checked at compile-time and typically represent programming errors."
+  },
+  {
+    "id": "java-medium-007",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `try-with-resources` statement?",
+    "answer": "A `try` statement that declares one or more resources (like an `InputStream`) that must be closed after the program is finished. It automatically calls the `close()` method on the resource, preventing resource leaks."
+  },
+  {
+    "id": "java-medium-008",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a shallow copy vs. a deep copy?",
+    "answer": "A shallow copy copies the main object but shares references to any contained objects. A deep copy creates a new copy of the main object and recursively copies all contained objects, creating a fully independent duplicate."
+  },
+  {
+    "id": "java-medium-009",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain the concept of a \"marker interface\".",
+    "answer": "An empty interface with no methods or fields. It's used to \"mark\" a class as having a certain capability. Examples include `Serializable` and `Cloneable`."
+  },
+  {
+    "id": "java-medium-010",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is reflection in Java?",
+    "answer": "An API that allows a program to examine or modify the runtime behavior of applications. It can be used to inspect classes, interfaces, fields, and methods at runtime without knowing their names at compile time."
+  },
+  {
+    "id": "java-medium-011",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between `fail-fast` and `fail-safe` iterators?",
+    "answer": "`fail-fast` iterators (like on `ArrayList`) throw a `ConcurrentModificationException` if the collection is modified while iterating. `fail-safe` iterators (like on `CopyOnWriteArrayList`) work on a clone of the collection and do not throw an exception."
+  },
+  {
+    "id": "java-medium-012",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is type erasure in generics?",
+    "answer": "The process by which the compiler removes generic type information at compile time, replacing it with casts. This ensures backward compatibility with older Java versions that don't have generics."
+  },
+  {
+    "id": "java-medium-013",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are wildcard generics (`?`)? Explain upper and lower bounds.",
+    "answer": "Wildcards represent an unknown type. `? extends Type` (upper bound) means it can be `Type` or any of its subclasses. `? super Type` (lower bound) means it can be `Type` or any of its superclasses."
+  },
+  {
+    "id": "java-medium-014",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Java Memory Model (JMM)?",
+    "answer": "It defines the rules for how threads interact through memory, specifying when changes to variables made by one thread become visible to other threads. It guarantees visibility and ordering of operations."
+  },
+  {
+    "id": "java-medium-015",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What does the `volatile` keyword do?",
+    "answer": "It ensures that any read of a `volatile` variable sees the most recent write by any thread, guaranteeing visibility. It also prevents instruction reordering for that variable."
+  },
+  {
+    "id": "java-medium-016",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between `synchronized` methods and `synchronized` blocks?",
+    "answer": "A `synchronized` method locks on the entire object (`this`). A `synchronized` block allows you to specify a different lock object and lock only a critical section of code, which can improve concurrency."
+  },
+  {
+    "id": "java-medium-017",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a `ThreadLocal`?",
+    "answer": "It provides thread-local variables. Each thread that accesses a `ThreadLocal` variable has its own, independently initialized copy of the variable."
+  },
+  {
+    "id": "java-medium-018",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain the `ExecutorService` framework.",
+    "answer": "A higher-level API for managing threads. It decouples task submission from task execution and provides thread pool management, making it easier to handle concurrent tasks than managing `Thread` objects directly."
+  },
+  {
+    "id": "java-medium-019",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a `Future` in concurrency?",
+    "answer": "An object that represents the result of an asynchronous computation. It provides methods to check if the computation is complete, wait for its completion, and retrieve the result."
+  },
+  {
+    "id": "java-medium-020",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a `CompletableFuture`? (Java 8)",
+    "answer": "An enhanced `Future` that can be explicitly completed and can be used as a building block for creating asynchronous workflows. It supports dependent actions that trigger upon its completion."
+  },
+  {
+    "id": "java-medium-021",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between `wait()` and `sleep()`?",
+    "answer": "`wait()` is a method of the `Object` class that releases the lock and puts the thread in a waiting state for a condition. `sleep()` is a static method of the `Thread` class that pauses the thread for a specified time without releasing any locks."
+  },
+  {
+    "id": "java-medium-022",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a deadlock?",
+    "answer": "A situation where two or more threads are blocked forever, each waiting for a resource held by another thread in the cycle."
+  },
+  {
+    "id": "java-medium-023",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the purpose of the `transient` keyword?",
+    "answer": "It marks an instance field to indicate that it should not be included when the object is serialized."
+  },
+  {
+    "id": "java-medium-024",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `serialVersionUID`?",
+    "answer": "A unique ID used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization."
+  },
+  {
+    "id": "java-medium-025",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the principle of \"composition over inheritance\"?",
+    "answer": "A design principle that favors building complex objects by \"composing\" them from simpler ones, rather than inheriting functionality from a complex base class. It often leads to more flexible and maintainable designs."
+  }
+]

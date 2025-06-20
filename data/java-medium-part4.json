@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-medium-076",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `jpackage` tool? (Java 16)",
+    "answer": "A packaging tool used to create native application bundles (e.g., `.msi`, `.exe`, `.dmg`, `.pkg`, `.deb`, `.rpm`) that include the Java runtime, allowing for a native installation experience."
+  },
+  {
+    "id": "java-medium-077",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Foreign Function & Memory (FFM) API? (Java 22)",
+    "answer": "A safe and efficient API for Java to interoperate with native code (like C libraries) and manage memory outside the Java heap. It is the official replacement for the older, more fragile JNI (Java Native Interface)."
+  },
+  {
+    "id": "java-medium-078",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the primary motivation for Virtual Threads (Project Loom)? (Java 21)",
+    "answer": "To improve the throughput of concurrent applications that spend most of their time waiting (e.g., for network requests or database calls). Virtual threads are cheap to create and block, allowing for a \"thread-per-request\" style at massive scale."
+  },
+  {
+    "id": "java-medium-079",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between a platform thread and a virtual thread?",
+    "answer": "A platform thread is a thin wrapper around an OS thread; they are a limited resource. A virtual thread is a lightweight, user-mode thread managed by the JVM. Many virtual threads run on a small number of platform threads."
+  },
+  {
+    "id": "java-medium-080",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is Structured Concurrency? (Java 21)",
+    "answer": "An API that simplifies multithreaded programming by treating tasks running in different threads as a single unit of work. It enforces a clear structure, simplifies error handling (error from one subtask cancels others), and improves observability."
+  },
+  {
+    "id": "java-medium-081",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a `StructuredTaskScope`?",
+    "answer": "The main entry point for Structured Concurrency. It creates a scope in which new threads can be forked. When the scope closes, it waits for all forked threads to complete."
+  },
+  {
+    "id": "java-medium-082",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the purpose of Sequenced Collections? (Java 21)",
+    "answer": "To provide a unified, well-defined API for any collection that has a defined encounter order. It adds methods like `getFirst()`, `getLast()`, and `reversed()` to interfaces like `List`, `Deque`, and `LinkedHashSet`."
+  },
+  {
+    "id": "java-medium-083",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What does the `reversed()` method on a `SequencedCollection` return?",
+    "answer": "A reversed-order *view* of the collection. It does not create a new collection, so changes to the original collection are reflected in the view."
+  },
+  {
+    "id": "java-medium-084",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is Pattern Matching for `switch`? (Java 21)",
+    "answer": "An enhancement that allows `switch` to test a variable against a number of patterns, not just constants. This includes type patterns (`case String s`), which can be refined with `when` clauses (`case String s when s.length() > 1`)."
+  },
+  {
+    "id": "java-medium-085",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the benefit of using `case null` in a `switch`?",
+    "answer": "It allows `switch` to handle `null` values directly and safely, eliminating the need for a separate `if (variable == null)` check before the `switch` block."
+  },
+  {
+    "id": "java-medium-086",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are String Templates? (Java 21, Preview)",
+    "answer": "A modern string composition feature that combines literal text with embedded expressions and template processors. They offer better safety, flexibility, and readability than string concatenation or `String.format()`."
+  },
+  {
+    "id": "java-medium-087",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a template processor like `STR` or `FMT`?",
+    "answer": "A static object that processes a string template. `STR` performs simple interpolation. `FMT` interprets format specifiers like `printf`."
+  },
+  {
+    "id": "java-medium-088",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are Unnamed Patterns and Variables? (Java 21, Preview)",
+    "answer": "The use of the underscore `_` to denote a variable or pattern that must be declared but is intentionally unused. This signals intent and can help the compiler with analysis. Example: `case Point(int x, _)`."
+  },
+  {
+    "id": "java-medium-089",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `ScopedValue` API? (Java 21, Preview)",
+    "answer": "An API for sharing data within and across threads. A value is set for a specific scope of execution and is available to any code (including child threads) running within that scope. It is an immutable and more robust alternative to `ThreadLocal`."
+  },
+  {
+    "id": "java-medium-090",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `Vector` API? (Incubating)",
+    "answer": "An API that expresses vector computations that reliably compile at runtime to optimal vector instructions on supported CPU architectures (SIMD), offering significant performance improvements over equivalent scalar computations."
+  },
+  {
+    "id": "java-medium-091",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `finalization` mechanism and why was it deprecated?",
+    "answer": "The `finalize()` method, which is called by the garbage collector before an object is reclaimed. It was deprecated because it is unreliable, unpredictable, can cause performance issues, and can lead to security vulnerabilities. `try-with-resources` is the recommended alternative for resource cleanup."
+  },
+  {
+    "id": "java-medium-092",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `Stream.toList()` method and how does it differ from `collect(Collectors.toList())`? (Java 16)",
+    "answer": "A more concise way to collect stream elements into a list. The key difference is that `toList()` guarantees that the returned list is *unmodifiable*. `collect(Collectors.toList())` makes no such guarantee; it typically returns a mutable `ArrayList`."
+  },
+  {
+    "id": "java-medium-093",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `switch` `when` clause? (Java 21)",
+    "answer": "A \"guarded pattern\" that adds a boolean condition to a `case` label. The case only matches if both the pattern matches and the `when` clause evaluates to true."
+  },
+  {
+    "id": "java-medium-094",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Can a record be abstract?",
+    "answer": "No, a record is implicitly `final` and cannot be abstract."
+  },
+  {
+    "id": "java-medium-095",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Can you add a custom constructor to a record?",
+    "answer": "Yes, you can add custom constructors, but they must delegate to the canonical (default) constructor as their first statement."
+  },
+  {
+    "id": "java-medium-096",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `mapMulti` stream operation? (Java 16)",
+    "answer": "An intermediate stream operation similar to `flatMap`. It's useful for replacing a one-to-many mapping where the number of resulting elements is small. It can be more performant as it avoids creating a new stream for each input element."
+  },
+  {
+    "id": "java-medium-097",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `ClassDataSharing` (CDS) feature?",
+    "answer": "A JVM feature that helps reduce startup time and memory footprint by sharing common class metadata between different JVM processes. AppCDS (Application Class-Data Sharing) extends this to include application classes."
+  },
+  {
+    "id": "java-medium-098",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `jfr` tool?",
+    "answer": "A command-line tool for interacting with Java Flight Recorder (JFR) files. It allows you to view, summarize, and extract data from `.jfr` recordings for performance analysis."
+  },
+  {
+    "id": "java-medium-099",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `jhsdb` tool?",
+    "answer": "The Java HotSpot Debugger, a command-line tool you can attach to a running Java process or a core dump to debug low-level issues in the HotSpot VM."
+  },
+  {
+    "id": "java-medium-100",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the main difference in garbage collection logging from Java 9 onwards?",
+    "answer": "Java 9 introduced the Unified JVM Logging Framework (`-Xlog`), which provides a single, consistent system for all JVM logging, including GC. It replaces the older, more complex set of flags like `-XX:+PrintGCDetails`."
+  }
+]

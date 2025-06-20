@@ -1,0 +1,142 @@
+[
+  {
+    "id": "selenium-medium-026",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Chain of Responsibility pattern and how is it useful in Selenium frameworks?",
+    "answer": "The Chain of Responsibility pattern creates a chain of receiver objects for a request. In Selenium frameworks, it can be used for: 1) Creating sequential validation chains where each validator performs a specific check and passes the result to the next; 2) Implementing flexible error handling where different handlers process different types of exceptions; 3) Building step-by-step page interactions where each step is handled by a different object; 4) Creating middleware-like structures for aspects like logging, screenshot capture, or retry mechanisms. This pattern promotes loose coupling and allows dynamic modification of the processing chain."
+  },
+  {
+    "id": "selenium-medium-027",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are the advantages and disadvantages of using a fluent interface in your Page Objects?",
+    "answer": "Advantages: 1) More readable and expressive code; 2) Method chaining makes action sequences clearer; 3) Better captures the flow of user interactions; 4) Enforces proper page navigation; 5) Can prevent invalid operations by returning appropriate page types. Disadvantages: 1) Can be complex to implement and maintain; 2) May lead to long method chains that are harder to debug; 3) Can create tight coupling between page objects; 4) Requires more initial design effort; 5) May confuse developers not familiar with the pattern."
+  },
+  {
+    "id": "selenium-medium-028",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you handle dynamic web tables in Selenium?",
+    "answer": "First, identify the table structure (rows, columns, and cells) using appropriate locators. Create utility methods for operations like finding rows by specific cell content, extracting values from specific columns, or checking if specific data exists in the table. For complex scenarios, map the table to a data structure (like a List of Maps or a custom object) for easier manipulation. For large tables with pagination, implement pagination handling logic. Consider using CSS or XPath with dynamic portions for targeting specific cells, such as `//table//tr[contains(., 'expectedText')]//td[2]`."
+  },
+  {
+    "id": "selenium-medium-029",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Command pattern and how can it be used in a Selenium framework?",
+    "answer": "The Command pattern encapsulates a request as an object, allowing parameterization of clients with different requests and queueing of requests. In a Selenium framework, it can be used to: 1) Abstract WebDriver operations into command objects; 2) Implement retry mechanisms for flaky operations; 3) Create a queue of operations that can be executed, logged, and reversed if needed; 4) Separate the UI interaction logic from the test flow logic; 5) Implement undo functionality in tests or applications under test. It's particularly useful when you need to track actions for reporting or have complex retry/recovery scenarios."
+  },
+  {
+    "id": "selenium-medium-030",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How would you implement logging in a Selenium framework?",
+    "answer": "Use a logging framework like Log4j, SLF4J, or java.util.logging. Create a utility class or aspect for consistent logging across the framework. Log at appropriate levels: ERROR for test failures and exceptions, WARN for potential issues, INFO for test steps and actions, DEBUG for detailed execution information, TRACE for very low-level details. Log WebDriver actions, page transitions, and important assertions. Consider logging before and after key operations. Configure logging to output to console, files, or external systems. Add context information like thread ID for parallel execution and timestamps."
+  },
+  {
+    "id": "selenium-medium-031",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Strategy pattern and how can it be used for different types of waits?",
+    "answer": "The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. For waits, you could create a `WaitStrategy` interface with methods like `waitForElement(driver, locator)`. Then implement different strategies like `ExplicitWaitStrategy`, `FluentWaitStrategy`, or custom strategies for specific application behaviors. Test classes or page objects can use different strategies based on the requirements without changing their code. This makes the waiting mechanism flexible and configurable at runtime, particularly useful for handling different parts of an application that may have different loading behaviors."
+  },
+  {
+    "id": "selenium-medium-032",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How would you implement a retry mechanism for flaky tests?",
+    "answer": "Use TestNG's retry analyzer by implementing the `IRetryAnalyzer` interface and overriding the `retry(ITestResult result)` method to return true for tests that should be retried. Attach it to tests using `@Test(retryAnalyzer = RetryAnalyzer.class)` or globally using a listener. In JUnit, use the `@RepeatedTest` annotation or build a custom rule. Implement logic to capture the state (screenshots, logs) on failure for debugging. Consider using exponential backoff between retries. Make sure not to retry tests that fail due to actual bugs rather than environment issues. Log retry attempts clearly to avoid masking real problems."
+  },
+  {
+    "id": "selenium-medium-033",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Decorator pattern and how can it be used with Page Objects?",
+    "answer": "The Decorator pattern attaches additional responsibilities to objects dynamically. With Page Objects, you can use it to: 1) Add cross-cutting concerns like logging or screenshot capturing to page interactions without modifying the core Page Object classes; 2) Create specialized versions of page objects for different testing scenarios (e.g., adding validation behaviors); 3) Layer multiple behaviors together in a flexible way; 4) Add additional functionality for specific test environments. For example, you could have a base PageObject and decorate it with a LoggingPageDecorator that adds detailed logging to all interactions."
+  },
+  {
+    "id": "selenium-medium-034",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How would you implement multi-language support in your Selenium framework?",
+    "answer": "Store UI text and messages in external property files for each supported language (e.g., `messages_en.properties`, `messages_fr.properties`). Use Java's ResourceBundle or a similar mechanism to load the appropriate language files based on test configuration. Create utility methods to retrieve localized strings. Parameterize tests with language codes to run the same tests across different languages. Consider implementing locale-specific locators if UI elements have different identifiers in different languages. For reporting, ensure that test results clearly indicate which language/locale was being tested."
+  },
+  {
+    "id": "selenium-medium-035",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Observer pattern and how can it be useful in a Selenium framework?",
+    "answer": "The Observer pattern lets objects subscribe to events and get notified when those events occur. In a Selenium framework, it can be used to: 1) Implement event listeners for WebDriver actions using the EventFiringWebDriver wrapper; 2) Create test listeners that respond to test events (started, passed, failed); 3) Build a reporting system where different reporters (HTML, JSON, log) subscribe to test execution events; 4) Implement custom notifications for specific application events without polling; 5) Separate the monitoring code from test execution code. This pattern is particularly useful for aspect-oriented concerns like logging, screenshots, or metrics collection."
+  },
+  {
+    "id": "selenium-medium-036",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is Selenium Grid and how does it work?",
+    "answer": "Selenium Grid is a tool that allows running tests in parallel across multiple machines and browsers. It follows a hub-node architecture where the hub is a central server that receives test requests with desired capabilities and routes them to appropriate nodes. Nodes are machines registered with the hub that actually execute the tests. The hub maintains a registry of available nodes and their capabilities (browser, version, platform). When a test requests a session with specific capabilities, the hub finds a matching node and forwards the commands there. This enables both parallel execution (faster testing) and cross-browser/cross-platform testing."
+  },
+  {
+    "id": "selenium-medium-037",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are Desired Capabilities in Selenium? How are they used?",
+    "answer": "Desired Capabilities are key-value pairs that tell the WebDriver which browser, browser version, platform (OS), and other properties to use when starting a session. They're used to configure browser behavior, specify device properties for mobile testing, connect to remote sessions in Selenium Grid, and set browser-specific options. Example: `DesiredCapabilities caps = new DesiredCapabilities(); caps.setBrowserName(\"chrome\"); caps.setPlatform(Platform.WINDOWS); caps.setVersion(\"latest\"); WebDriver driver = new RemoteWebDriver(new URL(\"http://localhost:4444/wd/hub\"), caps);` In newer Selenium versions, browser-specific option classes are often preferred."
+  },
+  {
+    "id": "selenium-medium-038",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you handle dependencies between tests? Should test methods be independent?",
+    "answer": "Ideally, tests should be independent to avoid cascading failures and allow parallel execution. However, some scenarios require dependencies due to complex setup requirements or logical connections between features. In TestNG, you can use the `dependsOnMethods` or `dependsOnGroups` attributes to define dependencies, which will skip dependent tests if prerequisite tests fail. For JUnit, you can use the `@Order` annotation or custom runners. Better approaches include: 1) Focusing on test isolation with proper setup/teardown; 2) Directly setting up the required state instead of relying on previous tests; 3) Using shared fixtures for common state; 4) If dependencies are unavoidable, grouping dependent tests into larger, cohesive tests."
+  },
+  {
+    "id": "selenium-medium-039",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How would you integrate Selenium tests with a CI/CD pipeline?",
+    "answer": "Set up a version control hook to trigger test execution on commits or pull requests. Configure your CI system (Jenkins, GitHub Actions, GitLab CI, etc.) to build the project, start the application, run the tests, and generate reports. Use headless browsers or containers for faster execution. Set up parallel test execution to reduce overall testing time. Configure automatic reporting and notifications for test failures. Consider implementing staged testing (run smoke tests first, then broader suites). For CD integration, set up quality gates based on test results. Consider implementing feature flags to deploy code while keeping features hidden until testing is complete."
+  },
+  {
+    "id": "selenium-medium-040",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between a data-driven and keyword-driven framework?",
+    "answer": "A data-driven framework separates test data from test scripts. The same test script runs multiple times with different data sets (typically from external sources like Excel or CSV). A keyword-driven framework separates test logic from test code by defining keywords (actions) that can be combined to create tests, often in a table format (Excel, etc.). A keyword could be \"login\" or \"verifyElementPresent.\" Data-driven frameworks focus on testing with different inputs, while keyword-driven frameworks focus on building tests from reusable components. Both can be combined into a hybrid framework."
+  },
+  {
+    "id": "selenium-medium-041",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a hybrid framework in Selenium?",
+    "answer": "A hybrid framework combines multiple framework types to leverage their strengths. Typically, it incorporates: 1) Page Object Model for maintainability; 2) Data-driven testing for comprehensive test coverage with different data sets; 3) Keyword-driven components for reusability and making tests accessible to non-programmers; 4) Behavior-driven elements for better readability and business alignment. This approach provides flexibility, reusability, and maintainability while adapting to different testing needs. Most enterprise-level frameworks are hybrid in nature, taking the best elements from different framework types."
+  },
+  {
+    "id": "selenium-medium-042",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you manage different test environments (dev, staging, production)?",
+    "answer": "Use configuration files (properties, YAML, JSON) for environment-specific data like URLs, credentials, and settings. Create profiles or property sets for each environment. Read configuration programmatically at runtime based on an environment parameter passed to the test. Use a configuration hierarchy (default values + environment-specific overrides). Consider using environment variables for sensitive information or CI/CD integration. Implement environment-aware utilities for operations that might behave differently across environments. Create separate test suites or tags for environment-specific tests. Ensure your reporting clearly indicates which environment was tested."
+  },
+  {
+    "id": "selenium-medium-043",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is BDD (Behavior-Driven Development) and how does it relate to Selenium testing?",
+    "answer": "BDD is an approach that focuses on describing software behavior in a natural language that non-programmers can understand. It emphasizes collaboration between developers, QA, and business stakeholders. In Selenium testing, BDD is typically implemented using frameworks like Cucumber, SpecFlow, or JBehave. Tests are written in Gherkin format (Given-When-Then) in feature files, which serve as both documentation and executable specifications. Step definitions connect these human-readable scenarios to Selenium code. This approach makes tests more readable for business stakeholders and helps ensure that tests reflect actual business requirements."
+  },
+  {
+    "id": "selenium-medium-044",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you implement the BDD approach with Cucumber and Selenium?",
+    "answer": "1) Write feature files in Gherkin syntax with scenarios describing user behaviors; 2) Implement step definitions that map Gherkin steps to Selenium code; 3) Use Page Objects to interact with the web application; 4) Create a hooks class for setup/teardown operations; 5) Run the tests with Cucumber runner classes or build tool plugins; 6) Generate reports showing which scenarios passed/failed. The step definitions act as a bridge between the human-readable feature files and the technical Selenium implementation. This separation allows business stakeholders to understand and even contribute to test scenarios while technical details remain in the code."
+  },
+  {
+    "id": "selenium-medium-045",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the purpose of tagging in Cucumber? How is it useful?",
+    "answer": "Tags in Cucumber (e.g., `@smoke`, `@regression`) allow you to categorize scenarios and control which ones to execute. Benefits include: 1) Running specific subsets of tests (smoke, regression, etc.); 2) Organizing scenarios by feature or functionality; 3) Marking scenarios based on their status (e.g., `@wip` for work in progress); 4) Applying specific hooks to certain scenarios (e.g., setup data only for tagged scenarios); 5) Excluding certain tests from a run."
+  }
+]

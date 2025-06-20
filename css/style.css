@@ -1,0 +1,236 @@
+/* Base styles */
+:root {
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: #f8f9fa;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Dark mode styles */
+body.dark-theme {
+    background-color: #212529;
+    color: #f8f9fa;
+}
+
+body.dark-theme .card {
+    background-color: #343a40;
+    border-color: #495057;
+}
+
+body.dark-theme .card-header {
+    background-color: #2c3136 !important;
+    border-color: #495057;
+}
+
+.dark-theme .list-group-item {
+    background-color: #343a40;
+    color: #f8f9fa;
+    border-color: #495057;
+}
+
+.dark-theme .list-group-item.active {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.dark-theme .question {
+    background-color: #343a40;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.dark-theme .answer {
+    background-color: #2b3035;
+    border-left-color: #28a745;
+}
+
+.dark-theme .pagination-page {
+    background-color: #343a40;
+    color: #f8f9fa;
+    border-color: #495057;
+}
+
+.dark-theme .pagination-page.active {
+    background-color: #0d6efd !important;
+}
+
+.dark-theme .form-control {
+    background-color: #2b3035;
+    color: #f8f9fa;
+    border-color: #495057;
+}
+
+.dark-theme .form-control::placeholder {
+    color: #adb5bd;
+}
+
+.dark-theme .btn-outline-primary {
+    color: #6ea8fe;
+    border-color: #6ea8fe;
+}
+
+.dark-theme .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/* Elements styling */
+.list-group-item-action:hover {
+    background-color: rgba(13, 110, 253, 0.08);
+    cursor: pointer;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all var(--transition-speed) ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.question {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    transition: all var(--transition-speed) ease;
+}
+
+.question:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.answer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #28a745;
+    border-radius: 4px;
+    transition: all var(--transition-speed) ease;
+}
+
+.toggle-answer {
+    margin-top: 15px;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
+}
+
+/* Pagination styling */
+#pagination-controls {
+    padding: 10px 0;
+}
+
+#pagination-pages {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #fff;
+}
+
+.pagination-page:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.pagination-page.active {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+    font-weight: bold;
+}
+
+#pagination-info {
+    font-weight: 500;
+    color: #6c757d;
+    margin: 10px 0;
+}
+
+/* Badge styling */
+.badge {
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 0.8em;
+    transition: all 0.2s;
+}
+
+/* Loading indicator */
+#loading-indicator {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Topic badges */
+.badge-easy {
+    background-color: #198754;
+    color: white;
+}
+
+.badge-medium {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-hard {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Search box styling */
+.search-box {
+    margin: 0 0 20px 0;
+}
+
+.search-box .form-control:focus {
+    box-shadow: none;
+    border-color: #0d6efd;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pagination-page {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .badge {
+        padding: 4px 8px;
+    }
+}

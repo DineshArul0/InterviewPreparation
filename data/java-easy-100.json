@@ -1,0 +1,84 @@
+{
+  "id": "java-easy",
+  "name": "Java - Easy",
+  "description": "Basic Java concepts and fundamentals",
+  "difficulty": "Easy",
+  "questions": [
+    {
+      "id": "java-easy-001",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What are the four main principles of Object-Oriented Programming (OOP)?",
+      "answer": "Encapsulation, Abstraction, Inheritance, and Polymorphism."
+    },
+    {
+      "id": "java-easy-002",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is the difference between `JDK`, `JRE`, and `JVM`?",
+      "answer": "`JVM` (Java Virtual Machine) is the runtime that executes bytecode. `JRE` (Java Runtime Environment) includes the JVM and standard libraries. `JDK` (Java Development Kit) includes the JRE and development tools (like the compiler)."
+    },
+    {
+      "id": "java-easy-003",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is a class in Java?",
+      "answer": "A blueprint or template for creating objects. It defines the properties (fields) and behaviors (methods) that objects of that type will have."
+    },
+    {
+      "id": "java-easy-004",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is an object in Java?",
+      "answer": "An instance of a class. It has a state (defined by its fields) and behavior (defined by its methods)."
+    },
+    {
+      "id": "java-easy-005",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is the purpose of a constructor?",
+      "answer": "To initialize a new object. It's called when an object is created using the `new` keyword."
+    },
+    {
+      "id": "java-easy-006",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is the `this` keyword?",
+      "answer": "It refers to the current object instance. It's used to resolve ambiguity between instance variables and parameters, or to call another constructor from within a constructor."
+    },
+    {
+      "id": "java-easy-007",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is the difference between `==` and the `.equals()` method?",
+      "answer": "`==` checks if two references point to the same memory location (reference equality). `.equals()` checks if the two objects have the same value (content equality), assuming it's properly overridden."
+    },
+    {
+      "id": "java-easy-008",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is a primitive data type? Name a few.",
+      "answer": "A basic data type that is not an object. Examples: `int`, `double`, `char`, `boolean`, `long`, `short`, `byte`, `float`."
+    },
+    {
+      "id": "java-easy-009",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is method overloading?",
+      "answer": "Defining multiple methods with the same name in the same class, but with different parameters (either number, type, or order of parameters)."
+    },
+    {
+      "id": "java-easy-010",
+      "type": "theory",
+      "difficulty": "Easy",
+      "question": "What is method overriding?",
+      "answer": "A subclass providing a specific implementation for a method that is already defined in its superclass."
+    }
+  ],
+  "pagination": {
+    "pageSize": 10,
+    "totalQuestions": 100
+  },
+  "version": "1.0.0",
+  "lastUpdated": "2025-06-19"
+}

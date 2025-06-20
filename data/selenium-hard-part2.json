@@ -1,0 +1,79 @@
+[
+  {
+    "id": "selenium-hard-026",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain how you would implement a comprehensive cross-browser compatibility testing framework.",
+    "answer": "I would create: 1) A browser abstraction layer that normalizes differences in WebDriver implementations; 2) Browser-specific workaround libraries that activate automatically; 3) Feature detection rather than browser detection; 4) Capability-based test filtering to skip incompatible tests; 5) Visual comparison tools for layout verification across browsers; 6) Browser-specific wait strategies; 7) Detailed cross-browser compatibility reporting; 8) Responsive design testing across multiple viewports; 9) Historical browser version support through browser farms or virtual machines; 10) CSS and JavaScript polyfill injection for older browsers; 11) Browser performance benchmarking; 12) Browser-specific user agent handling. Implementation would use the factory pattern for creating browser-specific driver instances and strategy pattern for browser-specific behaviors, with a configuration system defining the browser matrix to test against."
+  },
+  {
+    "id": "selenium-hard-027",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How would you test WebRTC applications that involve real-time audio/video streaming?",
+    "answer": "I would implement: 1) Automated media permission handling through browser preferences; 2) Virtual audio/video devices with test patterns; 3) WebRTC stats API monitoring via JavaScript execution; 4) Network condition simulation for testing adaptive bitrate; 5) Frame capture and analysis for video quality assessment; 6) Audio waveform analysis for audio quality verification; 7) Peer connection establishment verification; 8) ICE candidate gathering and connectivity checks; 9) End-to-end encryption verification; 10) Media synchronization testing; 11) Resource usage monitoring during calls; 12) Automated multi-user testing with multiple browser instances. This approach combines Selenium with specialized WebRTC testing tools and requires careful management of browser media permissions and device simulations."
+  },
+  {
+    "id": "selenium-hard-028",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How would you automate testing of complex HTML5 Canvas applications?",
+    "answer": "I would: 1) Use JavaScript execution to access the canvas context and state; 2) Implement canvas event simulation (mouse/touch interactions); 3) Capture and analyze canvas snapshots for verification; 4) Create custom assertions for canvas element states; 5) Interact with the application's internal model rather than the canvas when possible; 6) Use canvas accessibility hooks if available; 7) Implement pixel-by-pixel comparison with tolerance for rendering differences; 8) Create canvas action recordings and playback; 9) Leverage application-specific debugging hooks or state access; 10) Implement WebGL-specific testing for 3D canvas content; 11) Verify canvas animations through frame sampling; 12) Use computer vision techniques for interactive element detection. This approach acknowledges the difficulty of traditional WebElement-based testing for canvas applications and instead focuses on JavaScript-based interaction and state verification."
+  },
+  {
+    "id": "selenium-hard-029",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain how to effectively test progressive web apps (PWAs), including service workers and offline functionality.",
+    "answer": "I would: 1) Implement service worker lifecycle management through DevTools Protocol; 2) Register listeners for service worker events via JavaScript execution; 3) Create network condition simulation to test offline mode; 4) Verify cache storage contents directly; 5) Test push notification functionality with mock push servers; 6) Validate that assets are served from cache when offline; 7) Test installation and addition to home screen; 8) Verify that application state persists through service worker updates; 9) Implement background sync testing; 10) Validate offline analytics collection and replay; 11) Test IndexedDB storage and retrieval; 12) Verify manifest file and its properties. This approach requires deeper browser integration than standard Selenium tests, using both JavaScript execution and DevTools Protocol to access PWA-specific features and state."
+  },
+  {
+    "id": "selenium-hard-030",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How would you implement automated accessibility testing in your Selenium framework?",
+    "answer": "I would integrate: 1) Axe-core or similar accessibility library via JavaScript execution; 2) Custom assertions for WCAG compliance levels; 3) Keyboard navigation simulation and testing; 4) Screen reader compatibility verification through ARIA attribute checking; 5) Color contrast analysis; 6) Focus order verification; 7) Text scaling and zoom testing; 8) Automated alt text verification; 9) Landmark role verification; 10) Heading hierarchy analysis; 11) Interactive element accessibility testing; 12) Comprehensive accessibility reporting with remediation suggestions. Implementation would include both automated scans during regular functional testing and dedicated accessibility test suites, with integration into CI/CD pipelines and reporting that highlights issues by severity and impact on user groups."
+  },
+  {
+    "id": "selenium-hard-031",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How would you implement testing of client-side encryption and secure data handling?",
+    "answer": "I would: 1) Intercept and verify that sensitive data is encrypted before transmission; 2) Validate that encryption keys are properly protected; 3) Verify that plaintext sensitive data isn't exposed in the DOM; 4) Test secure storage mechanisms like IndexedDB with encryption; 5) Validate that data isn't leaked through browser storage (localStorage, sessionStorage); 6) Check that memory is properly cleared after sensitive operations; 7) Verify certificate pinning implementation; 8) Test key rotation mechanisms; 9) Validate encryption algorithm selection and implementation; 10) Verify that encrypted data cannot be accessed by injected scripts; 11) Test authentication state secure storage; 12) Verify secure clipboard handling. This approach combines Selenium with security-specific tools and JavaScript execution to validate that client-side security mechanisms are functioning correctly."
+  },
+  {
+    "id": "selenium-hard-032",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain how to test browser extensions using Selenium.",
+    "answer": "I would: 1) Configure WebDriver to load specific extensions during browser initialization; 2) Access extension background pages through special chrome:// or moz-extension:// URLs; 3) Test extension popup pages by triggering their UI; 4) Verify content script functionality by checking their effect on web pages; 5) Test extension storage through JavaScript execution or DevTools Protocol; 6) Verify extension-injected UI elements and their functionality; 7) Test permissions and privilege escalation; 8) Verify messaging between extension components; 9) Test browser action and page action functionality; 10) Validate extension behavior across different websites; 11) Test extension installation and updates; 12) Verify extension performance impact. Implementation requires browser-specific approaches, with Chrome and Firefox having different mechanisms for extension loading and debugging."
+  },
+  {
+    "id": "selenium-hard-033",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How would you implement testing for secure WebSockets in a Selenium framework?",
+    "answer": "I would: 1) Implement WebSocket monitoring through DevTools Protocol; 2) Create custom message sending/receiving through JavaScript execution; 3) Verify secure WebSocket establishment (wss:// protocol); 4) Validate certificate handling for WebSocket connections; 5) Test reconnection logic during connection drops; 6) Implement message integrity verification; 7) Test large message fragmentation handling; 8) Verify binary message support; 9) Test connection rate limiting; 10) Implement custom assertions for WebSocket states; 11) Validate proper connection closure; 12) Test authentication token handling for WebSockets. This approach requires going beyond standard Selenium capabilities to gain visibility and control over WebSocket connections, typically through a combination of JavaScript execution, network monitoring, and application-specific hooks."
+  },
+  {
+    "id": "selenium-hard-034",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How would you test drag-and-drop interactions in complex interfaces like tree views, kanban boards, or nested sortable elements?",
+    "answer": "I would: 1) Implement custom Action chains tailored to the specific drag-drop implementation; 2) Use JavaScript-based drag-drop simulation for frameworks that use custom implementations; 3) Create specialized helper methods for common patterns (e.g., move item between lists, reorder items); 4) Implement pixel-based positioning for precise drop locations; 5) Add verification of intermediate drag states (e.g., placeholder elements); 6) Create custom expected conditions for drop target availability; 7) Implement scroll handling during drag operations; 8) Add handling for drag constraints and validation; 9) Create specialized assertions for resulting data structures; 10) Implement workarounds for browser-specific drag-drop issues; 11) Use HTML5 DataTransfer object manipulation for standards-based implementations; 12) Create visual verification of drag-drop results. This approach recognizes that complex drag-drop interfaces often have custom implementations that require specialized interaction techniques."
+  },
+  {
+    "id": "selenium-hard-035",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What challenges exist in testing WebAssembly-based applications, and how would you address them?",
+    "answer": "Challenges include: 1) **Limited DOM visibility**: Address by interacting with JS-exposed APIs rather than internal WASM; 2) **Debugging difficulty**: Solve using browser DevTools Protocol to set breakpoints; 3) **Performance benchmarking**: Implement precise performance measurement through the Performance API; 4) **Memory usage validation**: Monitor with DevTools Memory domain; 5) **Error handling testing**: Inject test hooks for error cases; 6) **Binary state inspection**: Create JavaScript bridges to expose internal state; 7) **Testing across browser WASM implementations**: Implement browser-specific workarounds; 8) **Integration testing with JavaScript**: Validate the JS/WASM interface boundary; 9) **Loading and initialization testing**: Verify proper module instantiation and error handling; 10) **Worker thread testing**: Implement message passing verification. The approach focuses on the JavaScript/WASM boundary and creating appropriate hooks and bridges to gain visibility into the WASM module's behavior."
+  },
+  {
+    "id": "selenium-hard-036",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How would you implement testing of complex browser-based animations and transitions?",
+    "answer": "I would: 1) Implement animation control through JavaScript execution (pause, accelerate, step-through); 2) Create visual verification at key animation frames; 3) Validate animation timing and duration; 4) Test animation triggers and event firing; 5) Verify CSS property changes during transitions; 6) Implement custom waits for animation completion; 7) Test animation cancellation and interruption; 8) Verify performance characteristics of animations; 9) Implement assertions for transition endpoints; 10) Test accessibility features like reduced-motion preferences; 11) Verify animation behavior across different"
+  }
+]

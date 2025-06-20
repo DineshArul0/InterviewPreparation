@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-medium-051",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Why was `var` introduced? What problem does it solve?",
+    "answer": "It was introduced to reduce boilerplate code and improve readability by removing redundant type information, especially with complex generic types. For example, `var userMap = new HashMap<String, User>();`."
+  },
+  {
+    "id": "java-medium-052",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the new `Epsilon` Garbage Collector? (Java 11)",
+    "answer": "A \"no-op\" (do-nothing) garbage collector that handles memory allocation but does not reclaim any memory. It's useful for performance testing, microservices with very short lifespans, or applications with zero garbage."
+  },
+  {
+    "id": "java-medium-053",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `ZGC` Garbage Collector? (Java 11)",
+    "answer": "A scalable, low-latency garbage collector designed for applications that require large heaps (multi-terabyte) and very short pause times (under 10ms)."
+  },
+  {
+    "id": "java-medium-054",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are \"nest-based access controls\"? (Java 11)",
+    "answer": "A mechanism that allows classes that are logically part of the same code entity (nested classes) to access each other's `private` members directly, without the compiler needing to create accessibility-broadening bridge methods."
+  },
+  {
+    "id": "java-medium-055",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How does the new HTTP Client handle asynchronicity? (Java 11)",
+    "answer": "It has an asynchronous API that returns a `CompletableFuture`. Methods like `sendAsync()` allow you to send a request and handle the response in a non-blocking way."
+  },
+  {
+    "id": "java-medium-056",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the purpose of the `Predicate.not()` static method? (Java 11)",
+    "answer": "To provide a more readable way to negate a predicate. Instead of `p -> !p.test()`, you can write `Predicate.not(p)`. This is especially useful in stream filter operations."
+  },
+  {
+    "id": "java-medium-057",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `Optional.isEmpty()` method? (Java 11)",
+    "answer": "A more readable alternative to `!isPresent()`. It returns `true` if the `Optional` is empty."
+  },
+  {
+    "id": "java-medium-058",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `jdeprscan` tool? (Java 9)",
+    "answer": "A static analysis tool that scans a codebase for uses of deprecated API elements."
+  },
+  {
+    "id": "java-medium-059",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Multi-Release JAR File feature? (Java 9)",
+    "answer": "It allows a single JAR file to contain different versions of class files that are used depending on the Java runtime version. For example, a JAR could have a default implementation and a more optimized version for Java 17+."
+  },
+  {
+    "id": "java-medium-060",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `Stack-Walking API`? (Java 9)",
+    "answer": "A more efficient and flexible API for traversing the call stack than the older `Thread.getStackTrace()`. It allows lazy access to stack frames."
+  },
+  {
+    "id": "java-medium-061",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `Flow` API? (Java 9)",
+    "answer": "A set of interfaces (`Flow.Publisher`, `Flow.Subscriber`, etc.) that implement the Reactive Streams specification, providing a standard for asynchronous, non-blocking stream processing with backpressure."
+  },
+  {
+    "id": "java-medium-062",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `ProcessHandle` API? (Java 9)",
+    "answer": "An API that provides information about and control over native processes, such as getting a process ID (PID), checking if it's alive, and getting its children or parent."
+  },
+  {
+    "id": "java-medium-063",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `Collectors.filtering()` collector? (Java 9)",
+    "answer": "A collector that wraps another collector and applies a predicate to the input elements before they are accumulated."
+  },
+  {
+    "id": "java-medium-064",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `Collectors.flatMapping()` collector? (Java 9)",
+    "answer": "A collector that wraps another collector and applies a mapping function that returns a stream, then flattens the results into the downstream collector. It's the collector equivalent of `flatMap`."
+  },
+  {
+    "id": "java-medium-065",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `String.indent()` method? (Java 12)",
+    "answer": "It adjusts the indentation of each line in a string. A positive argument adds spaces, while a negative argument attempts to remove them."
+  },
+  {
+    "id": "java-medium-066",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain the difference between a `switch` statement and a `switch` expression. (Java 14)",
+    "answer": "A `switch` statement is a control flow statement that executes code blocks. A `switch` expression is an expression that evaluates to a single value. Expressions must be exhaustive (cover all possible cases)."
+  },
+  {
+    "id": "java-medium-067",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What problem do Records solve? (Java 16)",
+    "answer": "They eliminate the large amount of boilerplate code required for classes that are simple, immutable data carriers. The compiler generates the constructor, accessors, `equals`, `hashCode`, and `toString` automatically."
+  },
+  {
+    "id": "java-medium-068",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How does Pattern Matching for `instanceof` improve code quality? (Java 16)",
+    "answer": "It reduces verbosity and improves safety by combining the type check and the cast into a single operation, binding the cast variable within a specific scope. This avoids manual casting and potential `ClassCastException` errors."
+  },
+  {
+    "id": "java-medium-069",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the purpose of Sealed Classes? (Java 17)",
+    "answer": "To give authors of a class hierarchy more control over which classes can extend or implement it. This is useful for modeling domains where the set of possibilities is fixed (e.g., a shape can be a circle, square, or triangle, and nothing else)."
+  },
+  {
+    "id": "java-medium-070",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the relationship between sealed classes and pattern matching for `switch`?",
+    "answer": "They work very well together. Because a sealed hierarchy is finite, the compiler can check a `switch` expression for exhaustiveness, ensuring that you have handled all permitted subtypes."
+  },
+  {
+    "id": "java-medium-071",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a \"compact constructor\" in a Record?",
+    "answer": "A special constructor syntax for records that does not have a parameter list. It's used to add validation or normalization logic to the canonical constructor without having to explicitly assign fields."
+  },
+  {
+    "id": "java-medium-072",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `yield` keyword used for in a `switch` expression?",
+    "answer": "In a `case` block (using colons), `yield` is used to produce the value for that case. It is not needed when using the arrow (`->`) syntax."
+  },
+  {
+    "id": "java-medium-073",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `File.mismatch()` method? (Java 12)",
+    "answer": "A method that efficiently compares two files to find and return the position of the first mismatched byte, or -1L if the files are identical."
+  },
+  {
+    "id": "java-medium-074",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the `teeing` collector in the Stream API? (Java 12)",
+    "answer": "A collector that takes two downstream collectors and a merger function. It processes each input element with both collectors, then merges their results using the provided function. It's useful for calculating two different metrics (e.g., min and max) in a single pass."
+  },
+  {
+    "id": "java-medium-075",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are \"Helpful NullPointerExceptions\"? (Java 14)",
+    "answer": "An enhancement to the JVM that provides more detailed messages for `NullPointerException`s, indicating which specific variable was `null` in a chained invocation (e.g., `a.b.c()`)."
+  }
+]

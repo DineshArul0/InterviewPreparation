@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-easy-076",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What does it mean for a class to be `non-sealed`?",
+    "answer": "A class that is permitted to extend a sealed class but is itself open for extension by any other class."
+  },
+  {
+    "id": "java-easy-077",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `yield` keyword in a switch expression?",
+    "answer": "It is used to produce a value from a code block within a `case` of a switch expression."
+  },
+  {
+    "id": "java-easy-078",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `->` (arrow) syntax in a switch expression?",
+    "answer": "It separates the `case` label from the code to be executed or the value to be returned, without fall-through."
+  },
+  {
+    "id": "java-easy-079",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Can a record have instance fields other than those in the header?",
+    "answer": "No, records cannot declare additional instance fields. They can, however, have static fields."
+  },
+  {
+    "id": "java-easy-080",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Can a record extend another class?",
+    "answer": "No, a record implicitly extends `java.lang.Record` and cannot extend any other class."
+  },
+  {
+    "id": "java-easy-081",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Can a record implement an interface?",
+    "answer": "Yes, a record can implement one or more interfaces."
+  },
+  {
+    "id": "java-easy-082",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the purpose of a compact constructor in a record?",
+    "answer": "To add validation or normalization logic without having to write out the full canonical constructor. It doesn't have a parameter list."
+  },
+  {
+    "id": "java-easy-083",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `formatted()` method on `String`? (Java 15)",
+    "answer": "An instance method that provides a convenient way to format a string, similar to `String.format()`. Example: `\"%s: %d\".formatted(\"Value\", 10)`."
+  },
+  {
+    "id": "java-easy-084",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `toList()` method on Streams? (Java 16)",
+    "answer": "A more concise terminal operation for collecting stream elements into an unmodifiable list, replacing `collect(Collectors.toList())`."
+  },
+  {
+    "id": "java-easy-085",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `mapMulti()` method on Streams? (Java 16)",
+    "answer": "An intermediate operation similar to `flatMap`, but sometimes more efficient, especially when a mapping function produces a small number of results."
+  },
+  {
+    "id": "java-easy-086",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is Pattern Matching for `switch`? (Preview in Java 17+, Standard in 21)",
+    "answer": "It allows you to test a variable against multiple patterns in a `switch` statement or expression, including type patterns and `when` clauses for more refined conditions."
+  },
+  {
+    "id": "java-easy-087",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are Virtual Threads? (Java 21)",
+    "answer": "Lightweight threads managed by the JVM, not the OS. They are cheap to create and block on, making them ideal for high-throughput concurrent applications."
+  },
+  {
+    "id": "java-easy-088",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the main benefit of Virtual Threads?",
+    "answer": "They allow writing simple, synchronous-style code that scales to millions of concurrent tasks, without the complexity of asynchronous programming."
+  },
+  {
+    "id": "java-easy-089",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are Sequenced Collections? (Java 21)",
+    "answer": "A new set of interfaces (`SequencedCollection`, `SequencedSet`, `SequencedMap`) that provide a unified API for collections with a defined encounter order, adding methods like `getFirst()`, `getLast()`, `addFirst()`, `addLast()`, and `reversed()`."
+  },
+  {
+    "id": "java-easy-090",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `reversed()` method on a Sequenced Collection?",
+    "answer": "It returns a reversed-order view of the collection. For a `List`, it's a `List`; for a `Set`, it's a `SequencedSet`."
+  },
+  {
+    "id": "java-easy-091",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are String Templates? (Preview in Java 21+)",
+    "answer": "A feature that simplifies creating strings with embedded expressions, offering a safer and more powerful alternative to string concatenation or `String.format()`. Example: `STR.\"My name is \\{name}.\"`."
+  },
+  {
+    "id": "java-easy-092",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `STR` template processor?",
+    "answer": "The standard template processor for simple string interpolation."
+  },
+  {
+    "id": "java-easy-093",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are Unnamed Patterns and Variables? (Preview in Java 21+)",
+    "answer": "The use of an underscore `_` as a placeholder for a variable name or pattern that is required by syntax but not used, improving code readability."
+  },
+  {
+    "id": "java-easy-094",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the purpose of the Foreign Function & Memory (FFM) API? (Java 22)",
+    "answer": "To provide a safe and efficient way for Java programs to interoperate with code and data outside of the Java runtime (e.g., calling native C libraries)."
+  },
+  {
+    "id": "java-easy-095",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is Structured Concurrency? (Preview in Java 21+)",
+    "answer": "An API that simplifies concurrent programming by treating multiple tasks running in different threads as a single unit of work, ensuring better error handling and cancellation."
+  },
+  {
+    "id": "java-easy-096",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `ScopedValue` class? (Preview in Java 21+)",
+    "answer": "A mechanism to share data within and across threads for a limited period, intended as a more robust alternative to thread-local variables, especially with virtual threads."
+  },
+  {
+    "id": "java-easy-097",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `switch` `when` clause? (Part of Pattern Matching for switch)",
+    "answer": "A guarded pattern that adds a boolean condition to a `case` label, allowing for more refined control flow. Example: `case String s when s.length() > 5 -> ...`."
+  },
+  {
+    "id": "java-easy-098",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `null` case in a `switch`? (Java 21)",
+    "answer": "`switch` statements and expressions can now handle `null` directly with `case null`, avoiding the need for a separate null check before the switch."
+  },
+  {
+    "id": "java-easy-099",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the main goal of Project Loom?",
+    "answer": "To dramatically simplify concurrent programming in Java by introducing lightweight, user-mode threads (Virtual Threads) and other concurrency features like Structured Concurrency."
+  },
+  {
+    "id": "java-easy-100",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the main goal of Project Amber?",
+    "answer": "To evolve the Java language with smaller, productivity-oriented features like `var`, records, text blocks, and pattern matching."
+  }
+]

@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-hard-026",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How does garbage collection work with `finalize()`? Why is it problematic?",
+    "answer": "When the GC finds an object is unreachable, if that object has a non-empty `finalize()` method, it is not reclaimed immediately. Instead, it's put on a finalization queue to be processed by a finalizer thread. This is problematic because it's non-deterministic, can delay object reclamation, and can even \"resurrect\" an object, leading to unpredictable behavior and performance issues."
+  },
+  {
+    "id": "java-hard-027",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a \"metaspace\" in Java 8+? How does it differ from \"PermGen\"?",
+    "answer": "Metaspace is the memory area where the JVM stores class metadata (definitions of classes and methods). It replaced the older Permanent Generation (PermGen) space. The key difference is that Metaspace is allocated from native memory, not the Java heap, and it can auto-grow, which largely eliminates the `PermGen space` out-of-memory errors."
+  },
+  {
+    "id": "java-hard-028",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is string deduplication in G1 GC?",
+    "answer": "An optimization in the G1 garbage collector that reduces the memory footprint of `String` objects on the heap. It identifies duplicate string instances (those with the same character array) and makes them share the same underlying character array, saving memory."
+  },
+  {
+    "id": "java-hard-029",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a `StampedLock` and what is optimistic locking?",
+    "answer": "A `StampedLock` provides read, write, and optimistic read locks. An optimistic read (`tryOptimisticRead()`) returns a \"stamp\" without actually locking. The thread reads the data and then validates the stamp (`validate()`). If no write has occurred in the meantime, the read is valid and much faster than a traditional read lock. If validation fails, it must fall back to a full read lock."
+  },
+  {
+    "id": "java-hard-030",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a `LongAdder` and why might it be faster than an `AtomicLong`?",
+    "answer": "A `LongAdder` is used for counting in highly concurrent scenarios. Under high contention, `AtomicLong` can become a bottleneck because multiple threads are trying to update the same value using CAS loops. `LongAdder` reduces contention by maintaining a set of internal cells. Threads update different cells, and the final sum is the total of all cells, which is only calculated when `sum()` is called."
+  },
+  {
+    "id": "java-hard-031",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Unsafe` class and why should it be avoided?",
+    "answer": "`sun.misc.Unsafe` is an internal JVM class that provides low-level, direct memory access and manipulation capabilities (like C pointers). It should be avoided because it is not a public, supported API, its usage is platform-dependent, and it completely bypasses Java's safety mechanisms, which can easily crash the JVM. `VarHandle` is the modern, safe alternative."
+  },
+  {
+    "id": "java-hard-032",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain how a `try-with-resources` statement is desugared by the compiler.",
+    "answer": "The compiler transforms a `try-with-resources` block into a standard `try-finally` block. The `close()` method is called within the `finally` block. It also handles suppressed exceptions: if an exception is thrown in both the `try` block and the `close()` call, the exception from the `close()` call is \"suppressed\" and attached to the primary exception."
+  },
+  {
+    "id": "java-hard-033",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between `CLDR`, `Locale`, and `ResourceBundle`?",
+    "answer": "`Locale` represents a specific geographical, political, or cultural region. `ResourceBundle` is a class used to load locale-specific resources (like translated strings). `CLDR` (Common Locale Data Repository) is a standard repository of locale data that Java (since Java 9) can use as a source for its locale information, providing more extensive and up-to-date data."
+  },
+  {
+    "id": "java-hard-034",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Compact Strings` feature in Java 9?",
+    "answer": "An internal optimization where `String` objects that only contain Latin-1 characters are stored using one byte per character instead of two (UTF-16). This can halve the memory usage of strings in many applications. The change is transparent to the developer."
+  },
+  {
+    "id": "java-hard-035",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is ahead-of-time (AOT) compilation in Java? (Experimental in 9, removed in 17)",
+    "answer": "A feature that allowed compiling Java classes into native code *before* launching the virtual machine. The goal was to improve startup time for client applications. It was an experimental feature and was ultimately removed in favor of other solutions like GraalVM Native Image."
+  },
+  {
+    "id": "java-hard-036",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between `CompletableFuture.thenApply()` and `thenApplyAsync()`?",
+    "answer": "`thenApply()` will execute the given task in the same thread that completed the future (if it's already complete) or in the thread that calls `complete()`. `thenApplyAsync()` will submit the task to a thread pool (by default, the `ForkJoinPool.commonPool()`) for execution, ensuring it runs asynchronously."
+  },
+  {
+    "id": "java-hard-037",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the purpose of the `handle()` method in `CompletableFuture`?",
+    "answer": "The `handle()` method is used to process the result of a `CompletableFuture` regardless of whether it completed normally or exceptionally. It takes a `BiFunction` that receives both the result (which may be null) and the exception (which may be null), allowing you to provide a unified completion logic."
+  },
+  {
+    "id": "java-hard-038",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How does the Java Module System (JPMS) handle \"split packages\"? Why is it a problem?",
+    "answer": "A split package occurs when the same package is found in more than one module. The module system forbids this and will fail at startup. It's a problem because it creates ambiguity; the runtime wouldn't know which module to load the package from, breaking the principle of reliable configuration."
+  },
+  {
+    "id": "java-hard-039",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is an \"open module\" in JPMS?",
+    "answer": "A module that exports all of its packages and makes them available for deep reflection at runtime. It is declared using `open module my.module { ... }`. This provides a migration path for frameworks that rely heavily on reflection, like Spring and Hibernate."
+  },
+  {
+    "id": "java-hard-040",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `jlink` tool and how does it create a custom runtime image?",
+    "answer": "`jlink` is a tool that statically links a set of modules and their transitive dependencies to create a custom JRE. It can significantly reduce the size of a deployment by including only the necessary platform modules, and it can be used to create self-contained application images."
+  },
+  {
+    "id": "java-hard-041",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What are the performance implications of using `var`?",
+    "answer": "There are zero runtime performance implications. `var` is purely a compile-time feature. The compiler infers the exact type and generates the exact same bytecode as if the type had been declared explicitly."
+  },
+  {
+    "id": "java-hard-042",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between the `Epsilon` and `ZGC` garbage collectors?",
+    "answer": "They are opposites. `Epsilon` is a no-op collector that does *not* reclaim memory, designed for ultra-short-lived tasks or performance testing. `ZGC` is an ultra-low-latency collector designed for very large heaps that reclaims memory with pause times that don't exceed a few milliseconds."
+  },
+  {
+    "id": "java-hard-043",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What are \"nestmates\" and the `NestHost` attribute in a class file? (Java 11)",
+    "answer": "A nest is a set of logically related classes (a top-level class and all its nested members). They are \"nestmates\". The `NestHost` attribute in a class file identifies the top-level class of the nest. This mechanism allows nestmates to access each other's private members without the need for compiler-generated bridge methods."
+  },
+  {
+    "id": "java-hard-044",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Stream.toList()` method and how is it different from `collect(Collectors.toList())`? (Java 16)",
+    "answer": "`Stream.toList()` is a concise terminal operation that returns an *unmodifiable* `List`. `collect(Collectors.toList())` is a more general collector that makes no guarantee about the mutability of the returned list (it's typically a mutable `ArrayList`)."
+  },
+  {
+    "id": "java-hard-045",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How does Pattern Matching for `switch` improve on traditional `switch` statements? (Java 21)",
+    "answer": "It allows switching over types, not just constants. It combines the type test and variable binding (e.g., `case String s`). It allows for `when` clauses to add further conditions. And when used with sealed types, the compiler can check for exhaustiveness, preventing common errors."
+  },
+  {
+    "id": "java-hard-046",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain the concept of a \"canonical constructor\" for a Record.",
+    "answer": "The canonical constructor is the constructor that is automatically generated by the compiler for a record. It has the same parameters as the record's state description (the components in the header) and its purpose is to initialize all the fields."
+  },
+  {
+    "id": "java-hard-047",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `yield` keyword in a `switch` expression and why is it needed?",
+    "answer": "In a multi-statement `case` block (using a colon and `{}`), `yield` is used to explicitly provide the value that the block should produce for the switch expression. It's needed to resolve the ambiguity of what value a complex block should return."
+  },
+  {
+    "id": "java-hard-048",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `teeing` collector and provide a practical use case. (Java 12)",
+    "answer": "A collector that aggregates the results of two other collectors. A practical use case is calculating both the minimum and maximum value of a stream in a single pass. You would use `Collectors.teeing(Collectors.minBy(...), Collectors.maxBy(...), (min, max) -> ...)` to get both results."
+  },
+  {
+    "id": "java-hard-049",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What are \"Helpful NullPointerExceptions\" and how do they work? (Java 14)",
+    "answer": "A JVM feature that analyzes the bytecode of a line that throws an NPE and provides a detailed message indicating which part of a chained expression was null. For `a.b.c = 10;`, it can tell you if `a` was null or if `a.b` was null."
+  },
+  {
+    "id": "java-hard-050",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the primary goal of the Foreign Function & Memory (FFM) API? (Java 22)",
+    "answer": "To provide a pure-Java, safe, and supported way to call native libraries (like C code) and access memory outside the Java heap. It is the official, long-term replacement for the brittle and unsafe JNI."
+  }
+]

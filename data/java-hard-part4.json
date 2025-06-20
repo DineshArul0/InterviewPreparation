@@ -1,0 +1,114 @@
+[
+  {
+    "id": "java-hard-076",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `jstat` tool used for?",
+    "answer": "A command-line tool for monitoring JVM statistics, including information about garbage collection, class loading, and JIT compilation activity, without the overhead of a graphical profiler."
+  },
+  {
+    "id": "java-hard-077",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `jmap` tool used for?",
+    "answer": "A command-line tool used to print memory-related statistics for a running Java process, such as a heap summary, a histogram of class instances, or to create a full heap dump for later analysis."
+  },
+  {
+    "id": "java-hard-078",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between \"strong\", \"soft\", \"weak\", and \"phantom\" references?",
+    "answer": "Strong: The default reference type. An object with a strong reference will never be garbage collected.\nSoft: An object with only soft references will be garbage collected only when the JVM is low on memory. Useful for memory-sensitive caches.\nWeak: An object with only weak references will be garbage collected at the next GC cycle. Useful for canonicalizing mappings (`WeakHashMap`).\nPhantom: Enqueued after an object is finalized. Used for pre-mortem cleanup actions."
+  },
+  {
+    "id": "java-hard-079",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `CompletableFuture.allOf()` method?",
+    "answer": "A static method that returns a new `CompletableFuture` that is completed when all of the given `CompletableFuture`s complete. It is useful for waiting for a group of independent asynchronous tasks to finish."
+  },
+  {
+    "id": "java-hard-080",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `CompletableFuture.anyOf()` method?",
+    "answer": "A static method that returns a new `CompletableFuture` that is completed when any one of the given `CompletableFuture`s completes, with the same result."
+  },
+  {
+    "id": "java-hard-081",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `ProcessHandle` API? (Java 9)",
+    "answer": "An API that provides a way to interact with native OS processes. It allows you to get a process's PID, check if it's alive, get information about it (like its command or arguments), and get its parent or children processes."
+  },
+  {
+    "id": "java-hard-082",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Stack-Walking API` and why is it better than `getStackTrace()`? (Java 9)",
+    "answer": "An efficient API for traversing the call stack. It's better than `Thread.getStackTrace()` because it allows for lazy access to stack frames and can be more selective about the information it retrieves, making it significantly more performant."
+  },
+  {
+    "id": "java-hard-083",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Flow` API and what is \"backpressure\"? (Java 9)",
+    "answer": "The `Flow` API is Java's implementation of the Reactive Streams specification, providing a standard for asynchronous stream processing. Backpressure is a key concept where the `Subscriber` can signal to the `Publisher` how many items it is ready to receive, preventing the producer from overwhelming the consumer."
+  },
+  {
+    "id": "java-hard-084",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `jpackage` tool? (Java 16)",
+    "answer": "A tool that supersedes the older `javapackager`. It is used to create self-contained, native application installers (e.g., `.msi`, `.exe`, `.dmg`, `.rpm`) that bundle the application code and a custom Java runtime image created by `jlink`."
+  },
+  {
+    "id": "java-hard-085",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Stream.mapMulti()` method? (Java 16)",
+    "answer": "An intermediate stream operation that is an alternative to `flatMap`. It's particularly useful when a mapping function produces zero or a small number of results for each input element. It can be more efficient as it avoids the overhead of creating a new stream for each element."
+  },
+  {
+    "id": "java-hard-086",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Record` class?",
+    "answer": "The implicit superclass of all record classes, analogous to how `Enum` is the superclass of all enum types."
+  },
+  {
+    "id": "java-hard-087",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Can a record be generic?",
+    "answer": "Yes, records can be generic. Example: `public record Pair<T, U>(T first, U second) {}`."
+  },
+  {
+    "id": "java-hard-088",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Stream.takeWhile()` operation?",
+    "answer": "An intermediate operation that returns elements from an ordered stream as long as a predicate is true. It stops at the first element for which the predicate is false."
+  },
+  {
+    "id": "java-hard-089",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Stream.dropWhile()` operation?",
+    "answer": "An intermediate operation that discards elements from an ordered stream as long as a predicate is true. It returns the rest of the stream, starting with the first element for which the predicate is false."
+  },
+  {
+    "id": "java-hard-090",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Collectors.toUnmodifiableList()` collector?",
+    "answer": "A collector that accumulates stream elements into an unmodifiable `List`. It provides a clear, explicit way to create a list that cannot be changed after creation."
+  },
+  {
+    "id": "java-hard-091",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Optional.stream()` method?",
+    "answer": "A method that returns a `Stream` containing the `Optional`'s value if it is present, or an empty stream if the `Optional` is empty. This is useful for integrating `Optional` objects into Stream pipelines."
+  }
+]

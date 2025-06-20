@@ -1,0 +1,80 @@
+{
+  "topics": [
+    {
+      "id": "java-easy",
+      "name": "Java - Easy",
+      "description": "Basic Java concepts and fundamentals",
+      "difficulty": "Easy",
+      "questionsCount": 100,
+      "dataFiles": [
+        "java-easy-part1.json",
+        "java-easy-part2.json",
+        "java-easy-part3.json",
+        "java-easy-part4.json"
+      ]
+    },
+    {
+      "id": "java-medium",
+      "name": "Java - Medium",
+      "description": "Intermediate Java concepts and design patterns",
+      "difficulty": "Medium",
+      "questionsCount": 100,
+      "dataFiles": [
+        "java-medium-part1.json",
+        "java-medium-part2.json",
+        "java-medium-part3.json",
+        "java-medium-part4.json"
+      ]
+    },
+    {
+      "id": "java-hard",
+      "name": "Java - Hard",
+      "description": "Advanced Java concepts, memory management, and concurrency",
+      "difficulty": "Hard",
+      "questionsCount": 91,
+      "dataFiles": [
+        "java-hard-part1.json",
+        "java-hard-part2.json",
+        "java-hard-part3.json",
+        "java-hard-part4.json"
+      ]
+    },
+    {
+      "id": "selenium-easy",
+      "name": "Selenium - Easy",
+      "description": "Basic Selenium WebDriver and automation concepts",
+      "difficulty": "Easy",
+      "questionsCount": 100,
+      "dataFiles": [
+        "selenium-easy-part1.json",
+        "selenium-easy-part2.json",
+        "selenium-easy-part3.json",
+        "selenium-easy-part4.json"
+      ]
+    },
+    {
+      "id": "selenium-medium",
+      "name": "Selenium - Medium",
+      "description": "Intermediate Selenium concepts, wait strategies, and locators",
+      "difficulty": "Medium",
+      "questionsCount": 45,
+      "dataFiles": [
+        "selenium-medium-part1.json",
+        "selenium-medium-part2.json"
+      ]
+    },
+    {
+      "id": "selenium-hard",
+      "name": "Selenium - Hard",
+      "description": "Advanced Selenium framework design and architecture",
+      "difficulty": "Hard",
+      "questionsCount": 36,
+      "dataFiles": [
+        "selenium-hard-part1.json",
+        "selenium-hard-part2.json"
+      ]
+    }
+  ],
+  "version": "1.2.0",
+  "lastUpdated": "2025-06-20"
+}

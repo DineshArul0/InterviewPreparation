@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-hard-001",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain the Java Memory Model (JMM) in detail, including the happens-before relationship.",
+    "answer": "The JMM defines the rules that govern the visibility and ordering of memory operations (reads/writes) between threads. The \"happens-before\" relationship is a guarantee that memory writes by one specific statement are visible to another specific statement. Key happens-before rules include: monitor lock/unlock, volatile variable write/read, thread start, and thread join."
+  },
+  {
+    "id": "java-hard-002",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Describe the internal workings of a `ConcurrentHashMap`.",
+    "answer": "Unlike `Hashtable` which locks the entire map, `ConcurrentHashMap` uses a finer-grained locking mechanism. In older versions, it used \"segments\" (a set of hash buckets), locking only the relevant segment. In modern versions (Java 8+), it uses a node-based approach where it locks only the head node of a bucket during writes, allowing for very high concurrency."
+  },
+  {
+    "id": "java-hard-003",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is false sharing and how can you prevent it?",
+    "answer": "False sharing is a performance degradation problem where multiple threads, operating on independent variables, contend for the same cache line. When one thread modifies its variable, it invalidates the cache line for all other threads, forcing them to fetch from main memory. It can be prevented by padding data structures (e.g., using the `@Contended` annotation) to ensure that independent variables reside on different cache lines."
+  },
+  {
+    "id": "java-hard-004",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain the different types of Garbage Collectors available in modern JVMs (G1, ZGC, Shenandoah).",
+    "answer": "G1 (Garbage-First): Designed for large heaps with predictable pause times. It divides the heap into regions and prioritizes collecting regions with the most garbage.\nZGC (Z Garbage Collector): A scalable, ultra-low-latency collector for very large heaps (multi-terabyte). It aims for pause times under a few milliseconds by performing most of its work concurrently with the application.\nShenandoah: Another ultra-low-latency collector that performs more GC work concurrently than G1, aiming to decouple pause times from heap size."
+  },
+  {
+    "id": "java-hard-005",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is escape analysis in the JVM?",
+    "answer": "A compiler optimization where the JVM analyzes the scope of a new object's usage. If it determines that the object never \"escapes\" its method (i.e., isn't returned or passed to other threads), it can perform optimizations like \"scalar replacement\" (allocating fields in registers instead of the heap) or \"lock elision\" (removing unnecessary locks)."
+  },
+  {
+    "id": "java-hard-006",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between a `ReentrantLock` and a `synchronized` block?",
+    "answer": "`ReentrantLock` is a more flexible and powerful alternative from the `java.util.concurrent` package. It provides features not available in `synchronized`, such as timed lock waits, interruptible lock waits, non-blocking lock acquisition (`tryLock`), and support for fairness policies."
+  },
+  {
+    "id": "java-hard-007",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain the concept of a memory barrier (or memory fence).",
+    "answer": "A low-level instruction that forces the CPU to enforce an ordering constraint on memory operations. It ensures that operations before the barrier are committed before operations after the barrier. The `volatile` keyword in Java uses memory barriers implicitly."
+  },
+  {
+    "id": "java-hard-008",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a `Phaser` and how does it differ from a `CyclicBarrier` or `CountDownLatch`?",
+    "answer": "A `Phaser` is a more flexible synchronization barrier. Unlike `CyclicBarrier`, the number of parties registered with a `Phaser` can vary dynamically over time. It supports multiple phases, making it suitable for more complex, multi-stage parallel computations."
+  },
+  {
+    "id": "java-hard-009",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How does a `ThreadLocal` work internally and what is a potential issue with it?",
+    "answer": "Each `Thread` object has a `ThreadLocalMap` field. When you set a value on a `ThreadLocal`, it uses itself as a key to store the value in the current thread's map. A potential issue is memory leaks in application server environments if a `ThreadLocal` is not explicitly removed, as the thread might be pooled and reused, holding onto a reference to the object."
+  },
+  {
+    "id": "java-hard-010",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is method handle (`MethodHandle`) and how does it compare to Reflection?",
+    "answer": "A `MethodHandle` is a typed, directly executable reference to an underlying method, constructor, or field. It is generally faster and safer than Reflection because it is strongly typed and its linkage is checked at creation time, not at invocation time."
+  },
+  {
+    "id": "java-hard-011",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is `invokedynamic`?",
+    "answer": "A bytecode instruction introduced in Java 7 that allows the target of a method call to be determined at runtime (late binding). It is the foundation for how lambda expressions and other dynamic language features are implemented on the JVM."
+  },
+  {
+    "id": "java-hard-012",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain the concept of \"backpressure\" in reactive systems.",
+    "answer": "A mechanism by which a consumer can signal to a producer that it is overwhelmed with data. The producer then slows down or stops sending data to prevent the consumer from being overloaded and to avoid buffer overflows or out-of-memory errors. The `java.util.concurrent.Flow` API supports this."
+  },
+  {
+    "id": "java-hard-013",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between `ExecutorService.submit()` and `ExecutorService.execute()`?",
+    "answer": "`execute(Runnable)` is \"fire-and-forget\"; it starts a task but doesn't return anything. `submit(Callable)` or `submit(Runnable)` returns a `Future` object, which can be used to track the task's completion and retrieve its result or exception."
+  },
+  {
+    "id": "java-hard-014",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a `ForkJoinPool`?",
+    "answer": "An `ExecutorService` designed for tasks that can be broken down into smaller pieces recursively. It implements a \"work-stealing\" algorithm, where idle threads steal tasks from the queues of busy threads, improving CPU utilization. It's used by parallel streams."
+  },
+  {
+    "id": "java-hard-015",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between `Callable` and `Runnable`?",
+    "answer": "`Runnable`'s `run()` method is `void` and cannot throw checked exceptions. `Callable`'s `call()` method returns a value (of a generic type) and can throw checked exceptions."
+  },
+  {
+    "id": "java-hard-016",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is JIT (Just-In-Time) compilation? Explain C1 and C2 compilers.",
+    "answer": "The process of compiling Java bytecode into native machine code at runtime. The HotSpot JVM uses a tiered compilation model:\nC1 (Client Compiler): Compiles quickly but produces less optimized code. Good for client applications needing fast startup.\nC2 (Server Compiler): Takes longer to compile but produces highly optimized code. Good for long-running server applications.\nTiered compilation starts with C1 and promotes \"hot\" methods to C2 for maximum performance."
+  },
+  {
+    "id": "java-hard-017",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is \"on-stack replacement\" (OSR)?",
+    "answer": "A JVM optimization where a long-running loop inside a method can be compiled and optimized by the JIT compiler *while it is still running*. The JVM then seamlessly switches the execution from the interpreted version to the newly compiled, optimized version \"on the stack\"."
+  },
+  {
+    "id": "java-hard-018",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a \"safepoint\" in the JVM?",
+    "answer": "A point in a program's execution where the state of all threads is known and consistent. The JVM can only perform certain operations, like garbage collection or deoptimization, when all threads have reached a safepoint."
+  },
+  {
+    "id": "java-hard-019",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is biased locking?",
+    "answer": "A JVM optimization for uncontended locks. If a lock is consistently acquired by the same thread, the JVM \"biases\" the lock towards that thread, making subsequent acquisitions and releases extremely fast by avoiding expensive atomic operations."
+  },
+  {
+    "id": "java-hard-020",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is lock elision?",
+    "answer": "A JIT optimization where the compiler removes a lock entirely if it can prove that the lock is not contended and has no effect on program correctness (e.g., the locked object does not escape the thread)."
+  },
+  {
+    "id": "java-hard-021",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is lock coarsening?",
+    "answer": "A JIT optimization where if a sequence of adjacent code blocks all lock and unlock the same object, the compiler may merge them into a single, larger locked region to reduce the overhead of repeated locking."
+  },
+  {
+    "id": "java-hard-022",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `VarHandle` API? (Java 9)",
+    "answer": "A modern, safer, and more performant replacement for the `java.util.concurrent.atomic` and `sun.misc.Unsafe` classes. It provides a typed reference to a variable (a field or an array element) and supports fine-grained, atomic memory operations like compare-and-set."
+  },
+  {
+    "id": "java-hard-023",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `jcmd` tool and why is it useful?",
+    "answer": "A command-line tool used to send diagnostic commands to a running JVM. It's a single, unified tool for tasks that previously required multiple different utilities, such as creating heap dumps, starting JFR recordings, and getting thread dumps."
+  },
+  {
+    "id": "java-hard-024",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is Java Flight Recorder (JFR)?",
+    "answer": "A low-overhead data collection framework for troubleshooting Java applications. It gathers detailed profiling and diagnostic data about the JVM and the application, which can be analyzed with Java Mission Control (JMC)."
+  },
+  {
+    "id": "java-hard-025",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between `String.intern()` and string literals?",
+    "answer": "String literals are automatically placed in the string pool by the compiler. `String.intern()` is a method that can be called at runtime to manually add a string to the pool or retrieve a reference to an existing one. If the string is already in the pool, `intern()` returns the pooled instance; otherwise, it adds the string to the pool."
+  }
+]

@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-easy-026",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is abstraction?",
+    "answer": "Hiding the complex implementation details and showing only the essential features of the object."
+  },
+  {
+    "id": "java-easy-027",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Can you instantiate an interface?",
+    "answer": "No, an interface cannot be instantiated directly. It must be implemented by a class."
+  },
+  {
+    "id": "java-easy-028",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Can a class extend multiple classes in Java?",
+    "answer": "No, Java does not support multiple inheritance for classes. A class can only extend one superclass."
+  },
+  {
+    "id": "java-easy-029",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `super` keyword?",
+    "answer": "It is used to refer to the immediate parent class object. It can be used to call the superclass's constructor or methods."
+  },
+  {
+    "id": "java-easy-030",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the entry point of a Java application?",
+    "answer": "The `public static void main(String[] args)` method."
+  },
+  {
+    "id": "java-easy-031",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is a Lambda Expression?",
+    "answer": "An anonymous function that allows you to treat functionality as a method argument, or code as data. It enables functional programming."
+  },
+  {
+    "id": "java-easy-032",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is a Functional Interface?",
+    "answer": "An interface that contains exactly one abstract method. It can be implemented by a lambda expression. The `@FunctionalInterface` annotation is used to enforce this."
+  },
+  {
+    "id": "java-easy-033",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the Stream API?",
+    "answer": "A sequence of elements that supports various aggregate operations (like `filter`, `map`, `reduce`) to perform computations on data."
+  },
+  {
+    "id": "java-easy-034",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the difference between intermediate and terminal operations in a Stream?",
+    "answer": "Intermediate operations (e.g., `filter`, `map`) return a new stream and are lazy. Terminal operations (e.g., `forEach`, `collect`) produce a result or side-effect and trigger the stream processing."
+  },
+  {
+    "id": "java-easy-035",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `Optional` class?",
+    "answer": "A container object which may or may not contain a non-null value. It is used to avoid `NullPointerException`."
+  },
+  {
+    "id": "java-easy-036",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are default methods in interfaces?",
+    "answer": "Methods in an interface that have an implementation. They allow adding new functionality to existing interfaces without breaking implementing classes."
+  },
+  {
+    "id": "java-easy-037",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are static methods in interfaces?",
+    "answer": "Methods that belong to the interface itself, not to any instance of an implementing class. They can be called directly on the interface."
+  },
+  {
+    "id": "java-easy-038",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `forEach()` method in Java 8?",
+    "answer": "A terminal operation in the Stream API and a method on `Iterable` that performs an action for each element."
+  },
+  {
+    "id": "java-easy-039",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the purpose of the `filter()` method in a Stream?",
+    "answer": "To select elements from a stream that match a given predicate (a condition that returns true or false)."
+  },
+  {
+    "id": "java-easy-040",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the purpose of the `map()` method in a Stream?",
+    "answer": "To transform each element of a stream into another object using a given function."
+  },
+  {
+    "id": "java-easy-041",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is a `Predicate`?",
+    "answer": "A functional interface that represents a function taking one argument and returning a boolean. Used in `filter()`."
+  },
+  {
+    "id": "java-easy-042",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is a `Function`?",
+    "answer": "A functional interface that represents a function taking one argument and producing a result. Used in `map()`."
+  },
+  {
+    "id": "java-easy-043",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is a `Consumer`?",
+    "answer": "A functional interface that represents an operation that accepts a single input argument and returns no result. Used in `forEach()`."
+  },
+  {
+    "id": "java-easy-044",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is a `Supplier`?",
+    "answer": "A functional interface that represents a supplier of results, taking no arguments."
+  },
+  {
+    "id": "java-easy-045",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Can a lambda expression access instance variables?",
+    "answer": "Yes, it can access instance variables and static variables from its enclosing scope."
+  },
+  {
+    "id": "java-easy-046",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What does \"effectively final\" mean?",
+    "answer": "A local variable that is not declared `final` but whose value is never changed after initialization. Lambda expressions can access these variables."
+  },
+  {
+    "id": "java-easy-047",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `::` (double colon) operator?",
+    "answer": "It's the method reference operator, used to refer to a method without invoking it. It provides a shorthand for certain lambda expressions."
+  },
+  {
+    "id": "java-easy-048",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `collect()` terminal operation used for?",
+    "answer": "To perform a mutable reduction operation on the elements of a stream, such as collecting them into a `List`, `Set`, or `Map`."
+  },
+  {
+    "id": "java-easy-049",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "How do you find the count of elements in a Stream?",
+    "answer": "By using the `count()` terminal operation."
+  },
+  {
+    "id": "java-easy-050",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "How do you create a Stream?",
+    "answer": "From a collection (e.g., `list.stream()`), from an array (e.g., `Arrays.stream(arr)`), or using factory methods like `Stream.of()`."
+  }
+]

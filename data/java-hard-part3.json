@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-hard-051",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between a platform thread and a virtual thread? (Java 21)",
+    "answer": "A platform thread is a thin wrapper around a kernel (OS) thread; they are a scarce and heavyweight resource. A virtual thread is a lightweight, user-mode thread managed by the JVM. Many virtual threads are multiplexed onto a small pool of platform threads, making them cheap and abundant."
+  },
+  {
+    "id": "java-hard-052",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What does it mean for virtual threads to be \"non-preemptive\"?",
+    "answer": "The JVM scheduler does not forcibly preempt a running virtual thread. A virtual thread yields control of its carrier platform thread only when it blocks on I/O or another blocking operation in the JDK. This cooperative scheduling is key to their efficiency."
+  },
+  {
+    "id": "java-hard-053",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is \"pinning\" in the context of virtual threads?",
+    "answer": "Pinning occurs when a virtual thread executes code inside a `synchronized` block or calls a native method. While pinned, the virtual thread cannot be unmounted from its carrier platform thread, which can temporarily reduce concurrency. This is a key reason to prefer `ReentrantLock` over `synchronized` in the era of virtual threads."
+  },
+  {
+    "id": "java-hard-054",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is Structured Concurrency and what problem does it solve? (Java 21)",
+    "answer": "It's an API that simplifies concurrent code by treating a group of related tasks running in different threads as a single unit of work. It solves problems of error handling and cancellation in complex concurrent workflows. If one sub-task fails, the entire scope can be shut down, and if the main thread is cancelled, all sub-tasks are automatically cancelled."
+  },
+  {
+    "id": "java-hard-055",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain the `StructuredTaskScope.ShutdownOnFailure` policy.",
+    "answer": "This is a policy for a `StructuredTaskScope`. It creates a scope where if any forked sub-task fails (throws an exception), all other unfinished sub-tasks in that scope are immediately cancelled, and the `join()` method re-throws the exception from the first failed task."
+  },
+  {
+    "id": "java-hard-056",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the purpose of Sequenced Collections? (Java 21)",
+    "answer": "To introduce a unified and predictable API for collections that have a defined encounter order. It adds methods like `getFirst()`, `getLast()`, `addFirst()`, `addLast()`, and `reversed()` directly to interfaces like `List`, `Deque`, and `LinkedHashSet`, making them easier to work with."
+  },
+  {
+    "id": "java-hard-057",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "How does the `reversed()` method on a `SequencedCollection` work? Is it efficient?",
+    "answer": "It returns a reversed-order *view* of the original collection, not a copy. This is very efficient as it doesn't require iterating and copying all the elements. Changes to the original collection are reflected in the reversed view and vice-versa."
+  },
+  {
+    "id": "java-hard-058",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a \"guarded pattern\" in pattern matching for `switch`?",
+    "answer": "A pattern that is refined by a `when` clause. The `case` only matches if the type pattern matches *and* the boolean expression in the `when` clause is true. Example: `case String s when s.length() > 5`."
+  },
+  {
+    "id": "java-hard-059",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What are String Templates and how are they safer than string concatenation? (Java 21, Preview)",
+    "answer": "A feature for composing strings from literal text and embedded expressions. They are safer because the template processor (like `STR`) can validate and sanitize the embedded expressions before they are interpolated into the final string, preventing injection vulnerabilities."
+  },
+  {
+    "id": "java-hard-060",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `ScopedValue` API and how does it improve on `ThreadLocal`? (Java 21, Preview)",
+    "answer": "An API for sharing data within a bounded scope of execution. It improves on `ThreadLocal` by being immutable (the value is fixed for the scope) and by being automatically managed by the scope, which prevents the \"leaks\" common with `ThreadLocal` in thread-pooled environments. It is designed to work well with virtual threads."
+  },
+  {
+    "id": "java-hard-061",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `Vector` API and what is SIMD?",
+    "answer": "The `Vector` API is an incubating API that allows developers to express computations that can be compiled to Single Instruction, Multiple Data (SIMD) instructions on supported CPUs. SIMD allows a single instruction to operate on multiple data points simultaneously, leading to massive performance gains for parallelizable tasks like mathematical or graphical processing."
+  },
+  {
+    "id": "java-hard-062",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between `final`, `finally`, and `finalize`?",
+    "answer": "`final` is a keyword to make a variable, method, or class immutable/non-overridable/non-inheritable. `finally` is a block in a `try-catch` statement that always executes for cleanup. `finalize` is a deprecated method from the `Object` class that was unreliably called by the GC before object reclamation."
+  },
+  {
+    "id": "java-hard-063",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a \"phantom reference\" and what is its use case?",
+    "answer": "A `PhantomReference` is a type of reference that is enqueued *after* the object it refers to has been finalized and is ready to be reclaimed. Unlike soft or weak references, you cannot retrieve the object from a phantom reference. Its primary use case is for scheduling pre-mortem cleanup actions, such as freeing native resources, in a more reliable way than `finalize`."
+  },
+  {
+    "id": "java-hard-064",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a \"weak reference\" and what is its use case?",
+    "answer": "A `WeakReference` is a reference that does not prevent an object from being garbage collected. If an object's only remaining references are weak references, the GC is free to reclaim it. A common use case is for implementing caches or canonicalizing mappings, like in `WeakHashMap`."
+  },
+  {
+    "id": "java-hard-065",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a `WeakHashMap`?",
+    "answer": "A `Map` implementation where the keys are stored as `WeakReference`s. If a key in a `WeakHashMap` is no longer strongly referenced anywhere else, its entry will be automatically removed by the garbage collector."
+  },
+  {
+    "id": "java-hard-066",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between `java.util.Stack` and `java.util.Deque` for stack operations?",
+    "answer": "`Stack` is an old, legacy class that extends `Vector`, making it synchronized and less performant. `Deque` (like `ArrayDeque`) is the modern, recommended interface for stack (LIFO) and queue (FIFO) operations. `ArrayDeque` is unsynchronized and generally much faster."
+  },
+  {
+    "id": "java-hard-067",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a \"bridge method\" in Java?",
+    "answer": "A synthetic method created by the compiler to handle type erasure in generics. For example, if a class implements `Comparable<String>` with a `compareTo(String o)` method, the compiler will also generate a bridge method `compareTo(Object o)` that casts the argument and calls the typed version, ensuring compatibility with legacy code."
+  },
+  {
+    "id": "java-hard-068",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is annotation processing?",
+    "answer": "A compile-time mechanism where the compiler can use special \"annotation processors\" to scan source code for annotations and generate new source files or perform other tasks. It's used by many popular libraries like Lombok, Dagger, and MapStruct."
+  },
+  {
+    "id": "java-hard-069",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `ServiceLoader` API?",
+    "answer": "A mechanism for discovering and loading implementations of a service. A \"service\" is defined by an interface or abstract class. \"Providers\" are concrete implementations. It allows for creating extensible applications where implementations can be dropped into the classpath and discovered at runtime."
+  },
+  {
+    "id": "java-hard-070",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the difference between `instanceof` and `Class.isInstance()`?",
+    "answer": "`instanceof` is a language operator that works with compile-time types. `Class.isInstance(obj)` is a method that works on a `Class` object at runtime. `obj instanceof MyClass` is equivalent to `MyClass.class.isInstance(obj)`. The method is useful when the type being checked is not known at compile time."
+  },
+  {
+    "id": "java-hard-071",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a \"class loader\" and explain the delegation model.",
+    "answer": "A class loader is an object responsible for dynamically loading Java classes into the JVM. The delegation model works as follows: when asked to load a class, a class loader first delegates the request to its parent class loader. It only attempts to load the class itself if the parent cannot find it. This ensures that core Java classes are always loaded by the Bootstrap class loader, preventing spoofing."
+  },
+  {
+    "id": "java-hard-072",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is a \"PermGen\" space and why was it removed in Java 8?",
+    "answer": "The Permanent Generation was a part of the heap used to store class metadata and the string pool. It had a fixed maximum size, which often led to `OutOfMemoryError: PermGen space` if many classes were loaded. It was removed and replaced by Metaspace, which is allocated from native memory and can autogrow, making it more flexible and reliable."
+  },
+  {
+    "id": "java-hard-073",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `String` constant pool?",
+    "answer": "A special memory area in the JVM (historically in PermGen, now in the main heap) where string literals are stored. When the same string literal appears multiple times in the code, the compiler ensures that only one `String` object is created in the pool, saving memory."
+  },
+  {
+    "id": "java-hard-074",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `invokedynamic` instruction and how did it enable lambdas?",
+    "answer": "`invokedynamic` is a bytecode instruction that defers the linkage of a method call to runtime. For lambdas, instead of generating anonymous inner classes for every lambda, the compiler generates a static \"lambda factory\" method. The `invokedynamic` instruction calls this factory at runtime to create an object that implements the functional interface, which is much more efficient."
+  },
+  {
+    "id": "java-hard-075",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is the `jhsdb` tool used for?",
+    "answer": "The Java HotSpot Debugger. It's a serviceability tool that can attach to a running Java process or a post-mortem core dump to inspect low-level details of the JVM, such as heap memory, code cache, and internal data structures. It's an advanced tool for deep JVM troubleshooting."
+  }
+]

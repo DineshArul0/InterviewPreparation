@@ -1,0 +1,177 @@
+[
+  {
+    "id": "selenium-medium-001",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between implicit and explicit waits in Selenium? When should each be used?",
+    "answer": "Implicit waits tell WebDriver to poll the DOM for a fixed amount of time when trying to find elements that aren't immediately available. Once set, it applies to the entire session. Explicit waits (using `WebDriverWait`) are more precise, waiting for a specific condition to be true for a specific element. Use implicit waits for basic scenarios where elements might need a little time to appear. Use explicit waits for more complex scenarios where specific conditions must be met, especially in Ajax-heavy applications."
+  },
+  {
+    "id": "selenium-medium-002",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a fluent wait? How does it differ from a standard explicit wait?",
+    "answer": "A fluent wait is a type of explicit wait that gives more control over the waiting mechanism. Unlike a standard explicit wait, it allows you to define the maximum wait time, polling frequency, and which exceptions to ignore. This makes it more flexible for handling unreliable or slow-loading UI elements. Example: `Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofMillis(500)).ignoring(NoSuchElementException.class);`"
+  },
+  {
+    "id": "selenium-medium-003",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain the difference between CSS Selectors and XPath selectors. What are the advantages of each?",
+    "answer": "CSS Selectors are generally faster and more readable. They work well with modern HTML structures but cannot traverse up the DOM (find parent elements). XPath is more powerful and flexible, allowing navigation in all directions in the DOM tree and selections based on text content. XPath works better for complex structural selections but can be more verbose. In most modern browsers, the performance difference is negligible, so the choice often comes down to readability and specific requirements."
+  },
+  {
+    "id": "selenium-medium-004",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the StaleElementReferenceException and how do you handle it?",
+    "answer": "StaleElementReferenceException occurs when a WebElement reference is no longer valid, usually because the page has been refreshed or navigated away from, or the element has been removed by JavaScript. To handle it, you can: 1) Re-find the element before interacting with it; 2) Implement a retry mechanism using a try-catch block; 3) Use an explicit wait condition like `refreshed()` or `stalenessOf()`; or 4) Store locators instead of WebElements and use them to find elements fresh when needed."
+  },
+  {
+    "id": "selenium-medium-005",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are the different types of expected conditions in WebDriverWait?",
+    "answer": "Some common expected conditions include: `elementToBeClickable()`, `visibilityOf()`, `invisibilityOf()`, `presenceOfElementLocated()`, `textToBePresentInElement()`, `attributeContains()`, `alertIsPresent()`, `frameToBeAvailableAndSwitchToIt()`, `numberOfElementsToBeMoreThan()`, and `stalenessOf()`. These allow precise control over when a wait condition is satisfied before proceeding with test execution."
+  },
+  {
+    "id": "selenium-medium-006",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you upload files using Selenium WebDriver?",
+    "answer": "For standard HTML file inputs (`<input type=\"file\">`), you can use the `sendKeys()` method and provide the absolute file path. For example: `driver.findElement(By.id(\"fileInput\")).sendKeys(\"C:/files/upload.jpg\");`. For non-standard upload controls that open a system dialog, you need to use tools like AutoIT, Robot class, or Sikuli to interact with the native OS dialog."
+  },
+  {
+    "id": "selenium-medium-007",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you handle hidden elements in Selenium?",
+    "answer": "WebDriver cannot directly interact with hidden elements (clicking or typing). You have three main approaches: 1) Use JavaScript to modify the element's visibility before interacting with it: `((JavascriptExecutor)driver).executeScript(\"arguments[0].style.display='block'\", element);` 2) Use JavaScript to directly interact with the element: `((JavascriptExecutor)driver).executeScript(\"arguments[0].click()\", element);` 3) Invoke events programmatically using JavaScript."
+  },
+  {
+    "id": "selenium-medium-008",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the JavascriptExecutor interface? Give some examples of when it's useful.",
+    "answer": "JavascriptExecutor is an interface that provides methods to execute JavaScript within the browser. It's useful when WebDriver commands are insufficient, such as: scrolling a page; clicking elements that are difficult to access; modifying DOM elements; handling HTML5 elements like sliders; accessing browser cookies or local storage; and executing custom JavaScript functions defined on the page."
+  },
+  {
+    "id": "selenium-medium-009",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How does Selenium handle iframes, and what are the different ways to switch between them?",
+    "answer": "Selenium requires explicitly switching to an iframe before interacting with elements inside it. You can switch to an iframe using `driver.switchTo().frame()` with: 1) The index (integer) of the frame; 2) The name or ID attribute (String) of the frame; 3) The WebElement object representing the frame. To return to the main document, use `driver.switchTo().defaultContent()`. To switch to a parent frame, use `driver.switchTo().parentFrame()` (added in Selenium 3)."
+  },
+  {
+    "id": "selenium-medium-010",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are Shadow DOM elements and how do you interact with them?",
+    "answer": "Shadow DOM is a web standard that encapsulates DOM trees inside elements, creating a boundary between the document's DOM and the component's DOM. Traditional Selenium locators cannot directly access elements within a Shadow DOM. To interact with them, you need to: 1) Locate the shadow host; 2) Access its shadow root using JavaScript: `ShadowRoot shadow = (ShadowRoot) ((JavascriptExecutor) driver).executeScript(\"return arguments[0].shadowRoot\", host);` 3) Then find elements within the shadow root: `shadow.findElement(By.cssSelector(\"input\"))`."
+  },
+  {
+    "id": "selenium-medium-011",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the difference between Actions and Advanced User Interactions API?",
+    "answer": "They refer to the same thing. The Actions class is Selenium's implementation of the Advanced User Interactions API, which allows simulating complex user gestures like drag-and-drop, double-clicks, context-clicks, key combinations, and hover actions. The API provides a way to build a sequence of actions and execute them as a single operation with `perform()`."
+  },
+  {
+    "id": "selenium-medium-012",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you perform drag-and-drop operations?",
+    "answer": "There are multiple approaches: 1) Using the Actions class: `new Actions(driver).dragAndDrop(sourceElement, targetElement).perform();` or `new Actions(driver).clickAndHold(sourceElement).moveToElement(targetElement).release().perform();` 2) Using JavaScript for complex cases where the Actions API doesn't work reliably (particularly for HTML5 drag and drop). Sometimes, you may need to simulate drag events using JavaScript directly."
+  },
+  {
+    "id": "selenium-medium-013",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How would you simulate pressing multiple keys simultaneously (e.g., Ctrl+C)?",
+    "answer": "Using the Actions class: `new Actions(driver).keyDown(Keys.CONTROL).sendKeys(\"c\").keyUp(Keys.CONTROL).perform();`. This simulates holding down the Control key, pressing 'c', and then releasing the Control key."
+  },
+  {
+    "id": "selenium-medium-014",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Robot class and when would you use it?",
+    "answer": "`java.awt.Robot` is a Java AWT class (not part of Selenium) that can generate native system input events for keyboard and mouse operations. It's useful when Selenium cannot handle specific interactions like: 1) Dealing with OS-level dialog boxes (file uploads, downloads, print dialogs); 2) Performing keyboard shortcuts not supported by the WebDriver API; 3) Interacting with desktop applications alongside web applications."
+  },
+  {
+    "id": "selenium-medium-015",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you disable browser notifications when starting a WebDriver session?",
+    "answer": "You configure browser options before creating the WebDriver instance. For Chrome: `ChromeOptions options = new ChromeOptions(); options.addArgument(\"--disable-notifications\"); WebDriver driver = new ChromeDriver(options);`. For Firefox: `FirefoxOptions options = new FirefoxOptions(); options.addPreference(\"dom.webnotifications.enabled\", false); WebDriver driver = new FirefoxDriver(options);`."
+  },
+  {
+    "id": "selenium-medium-016",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Page Object Model (POM) and what are its benefits?",
+    "answer": "The Page Object Model is a design pattern that creates an object repository for web UI elements. Each web page is represented as a class, and the elements of that page are defined as variables in the class. User interactions are represented as methods. Benefits include: 1) Improved test maintenance by separating test logic from page interaction logic; 2) Creating reusable code that can be shared across tests; 3) Making tests more readable and understandable; and 4) Reducing code duplication."
+  },
+  {
+    "id": "selenium-medium-017",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is Page Factory in Selenium?",
+    "answer": "Page Factory is an implementation of the Page Object Model. It's a built-in mechanism in Selenium that allows for more elegant initialization of Page Objects using the `@FindBy` annotation to define element locators. Elements are initialized on-demand with a proxy when they are needed (lazy initialization). The `PageFactory.initElements(driver, this);` method wires up the driver to the annotated elements."
+  },
+  {
+    "id": "selenium-medium-018",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Compare and contrast the `@FindBy` annotation with standard `driver.findElement()` calls.",
+    "answer": "`@FindBy` (used with Page Factory) allows you to define locators at the class level using annotations, which results in cleaner code. Elements are lazily initialized when first used. `driver.findElement()` requires locator code to be written in methods, is more verbose, but gives more control over when and how elements are found. `@FindBy` is generally better for maintainability, while `driver.findElement()` offers more flexibility for dynamic or complex locators."
+  },
+  {
+    "id": "selenium-medium-019",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is a Singleton pattern and how is it used in WebDriver frameworks?",
+    "answer": "The Singleton pattern ensures a class has only one instance while providing a global access point to that instance. In WebDriver frameworks, it's commonly used for driver initialization to ensure all test classes use the same WebDriver instance. This prevents multiple browser instances being opened and closed unnecessarily. Example implementation includes a private constructor, a private static instance variable, and a public static method for getting the instance, with logic to create it if it doesn't exist."
+  },
+  {
+    "id": "selenium-medium-020",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is the Factory pattern and how can it be used in a Selenium framework?",
+    "answer": "The Factory pattern is a creational pattern that uses a factory method to create objects without specifying the exact class of object to create. In Selenium frameworks, it's commonly used to create different WebDriver instances based on parameters. For example, a `DriverFactory` class might have a `getDriver(String browserType)` method that returns the appropriate WebDriver instance (ChromeDriver, FirefoxDriver, etc.) based on the browser parameter. This centralizes driver creation logic and makes test code cleaner."
+  },
+  {
+    "id": "selenium-medium-021",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How would you implement cross-browser testing in your Selenium framework?",
+    "answer": "Create an abstraction layer for driver initialization using a factory pattern or configuration-driven approach. Use parameters from test methods, a configuration file, or environment variables to determine which browser to use. Implement WebDriver-agnostic code in your tests and page objects. Consider using TestNG parameters or JUnit parameterization to run the same tests with different browser configurations. For parallel cross-browser testing, integrate with a tool like Selenium Grid or a cloud testing service such as BrowserStack or Sauce Labs."
+  },
+  {
+    "id": "selenium-medium-022",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are the key components of a robust Selenium framework?",
+    "answer": "1) Design Patterns: Page Object Model, Factory Pattern, Singleton Pattern; 2) Base Classes: Common functionality like driver setup, waiting strategies, and common actions; 3) Configuration Management: External configuration for environments, browsers, etc.; 4) Testing Framework Integration: TestNG/JUnit with appropriate annotations; 5) Reporting: Test execution results with screenshots for failures; 6) Utility Classes: Common operations like screenshot capture, JavaScript execution; 7) Data Management: External data sources for test data (Excel, CSV, JSON); 8) Logging: Detailed execution logs for debugging; 9) Exception Handling: Proper error handling and recovery mechanisms; 10) Cross-browser and Cross-platform Support."
+  },
+  {
+    "id": "selenium-medium-023",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you handle parameterization of test data in your Selenium framework?",
+    "answer": "Use data providers (TestNG) or parameterized tests (JUnit) to supply different test data sets. Externalize test data in Excel, CSV, JSON, or XML files, and read data using libraries like Apache POI (Excel), OpenCSV, or Jackson (JSON). Consider using a database for large volumes of test data. For simple scenarios, use property files. Create a data access layer in your framework to abstract the source of data from the test classes. You might also use the Data-Driven Framework pattern, where test steps remain the same but data changes."
+  },
+  {
+    "id": "selenium-medium-024",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are the advantages of using the Builder pattern in Page Objects?",
+    "answer": "The Builder pattern provides a more fluent and readable way to construct complex objects step by step. In Page Objects, it allows for: 1) Method chaining for better readability (e.g., `loginPage.withUsername(\"user\").withPassword(\"pass\").login()`); 2) Creating page objects with optional parameters; 3) Making the intent of the code clearer; 4) Validating the object state before it's constructed; 5) Supporting operations that return different types (navigating to different pages). It's particularly useful for pages with forms or complex user interactions."
+  },
+  {
+    "id": "selenium-medium-025",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "How do you implement a custom wait mechanism in a PageObject?",
+    "answer": "Create a base page class with reusable wait methods tailored to common scenarios in your application. Implement methods like `waitForElementVisible(locator)`, `waitForElementClickable(locator)`, `waitForPageLoad()` using WebDriverWait and appropriate ExpectedConditions. For application-specific waits, implement custom methods like `waitForProgressBarToDisappear()` or `waitForDataToLoad()`. Consider creating custom ExpectedCondition implementations for complex wait scenarios. These methods should be available to all page objects through inheritance."
+  }
+]

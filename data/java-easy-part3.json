@@ -1,0 +1,177 @@
+[
+  {
+    "id": "java-easy-051",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What was the major change in Java 9?",
+    "answer": "The Java Platform Module System (JPMS), which allows applications to be assembled from modules."
+  },
+  {
+    "id": "java-easy-052",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is `jshell`? (Java 9)",
+    "answer": "An interactive Read-Eval-Print Loop (REPL) tool that allows you to execute Java code snippets without needing to write a full class."
+  },
+  {
+    "id": "java-easy-053",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are private methods in interfaces? (Java 9)",
+    "answer": "Private helper methods that can be used within an interface to share code between default and static methods, without exposing the implementation details."
+  },
+  {
+    "id": "java-easy-054",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `var` keyword? (Java 10)",
+    "answer": "It allows for Local-Variable Type Inference. The compiler infers the type of a local variable based on the value assigned to it."
+  },
+  {
+    "id": "java-easy-055",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Can `var` be used for instance variables or method parameters?",
+    "answer": "No, `var` can only be used for local variables inside methods, in `for` loops, and with `try-with-resources`."
+  },
+  {
+    "id": "java-easy-056",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the new HTTP Client API? (Java 11)",
+    "answer": "A modern, standardized API for making HTTP requests, supporting HTTP/1.1, HTTP/2, and WebSockets. It replaces the old `HttpURLConnection`."
+  },
+  {
+    "id": "java-easy-057",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "How do you run a single-file source-code program? (Java 11)",
+    "answer": "You can run a `.java` file directly from the command line using `java MyFile.java` without compiling it first with `javac`."
+  },
+  {
+    "id": "java-easy-058",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the purpose of the `of()` factory methods for collections? (Java 9)",
+    "answer": "To create unmodifiable (immutable) collections like `List.of()`, `Set.of()`, and `Map.of()` with a concise syntax."
+  },
+  {
+    "id": "java-easy-059",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `takeWhile` method on Streams? (Java 9)",
+    "answer": "An intermediate operation that returns elements from a stream as long as a given predicate is true. It stops as soon as the predicate becomes false."
+  },
+  {
+    "id": "java-easy-060",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `dropWhile` method on Streams? (Java 9)",
+    "answer": "An intermediate operation that discards elements from a stream as long as a given predicate is true. It returns the rest of the stream once the predicate becomes false."
+  },
+  {
+    "id": "java-easy-061",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `ofNullable` method on Streams? (Java 9)",
+    "answer": "A static method `Stream.ofNullable(obj)` that returns an empty stream if the object is null, or a stream with a single element if it's not null."
+  },
+  {
+    "id": "java-easy-062",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `ifPresentOrElse` method on `Optional`? (Java 9)",
+    "answer": "It allows you to perform an action if a value is present, or run a different action (a `Runnable`) if the `Optional` is empty."
+  },
+  {
+    "id": "java-easy-063",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `or` method on `Optional`? (Java 9)",
+    "answer": "It allows you to provide an alternative `Optional` from a `Supplier` if the original `Optional` is empty."
+  },
+  {
+    "id": "java-easy-064",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `isBlank()` method on `String`? (Java 11)",
+    "answer": "It returns `true` if the string is empty or contains only white space characters."
+  },
+  {
+    "id": "java-easy-065",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `lines()` method on `String`? (Java 11)",
+    "answer": "It returns a `Stream<String>` of lines extracted from the string, separated by line terminators."
+  },
+  {
+    "id": "java-easy-066",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `strip()` method on `String`? (Java 11)",
+    "answer": "It removes leading and trailing whitespace. It is Unicode-aware, unlike `trim()`."
+  },
+  {
+    "id": "java-easy-067",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `repeat()` method on `String`? (Java 11)",
+    "answer": "It returns a new string which is the original string concatenated with itself a given number of times."
+  },
+  {
+    "id": "java-easy-068",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `asMatchPredicate()` method on `Pattern`? (Java 11)",
+    "answer": "It creates a `Predicate` that tests if a string matches the given regular expression pattern."
+  },
+  {
+    "id": "java-easy-069",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the `not()` predicate method? (Java 11)",
+    "answer": "A static method `Predicate.not()` that takes another predicate and returns its logical negation."
+  },
+  {
+    "id": "java-easy-070",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is the purpose of the `toArray(IntFunction)` method on collections? (Java 11)",
+    "answer": "It provides a more convenient way to create a typed array from a collection's elements, for example: `list.toArray(String[]::new)`."
+  },
+  {
+    "id": "java-easy-071",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are Switch Expressions? (Java 14)",
+    "answer": "An enhanced form of the `switch` statement that can be used as an expression to return a value. It uses `->` syntax and doesn't require `break` statements."
+  },
+  {
+    "id": "java-easy-072",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are Text Blocks? (Java 15)",
+    "answer": "A multi-line string literal that avoids the need for most escape sequences. It starts with `\"\"\"` followed by a newline and ends with `\"\"\"`."
+  },
+  {
+    "id": "java-easy-073",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are Records? (Java 16)",
+    "answer": "A concise way to create immutable data carrier classes. The compiler automatically generates the constructor, getters, `equals()`, `hashCode()`, and `toString()` methods."
+  },
+  {
+    "id": "java-easy-074",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is `instanceof` Pattern Matching? (Java 16)",
+    "answer": "It simplifies `instanceof` checks by allowing you to declare a variable in the `if` condition, which is automatically cast to the target type. Example: `if (obj instanceof String s) { ... }`."
+  },
+  {
+    "id": "java-easy-075",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are Sealed Classes? (Java 17)",
+    "answer": "Classes and interfaces that restrict which other classes or interfaces may extend or implement them, using the `sealed` and `permits` keywords."
+  }
+]

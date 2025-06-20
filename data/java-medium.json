@@ -1,0 +1,98 @@
+{
+  "id": "java-medium",
+  "name": "Java - Medium",
+  "description": "Intermediate Java concepts and design patterns",
+  "difficulty": "Medium",
+  "questions": [
+    {
+      "id": "java-medium-001",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "What is a ThreadLocal variable?",
+      "answer": "A ThreadLocal variable provides thread-local variables, where each thread has its own copy of the variable. It's useful to avoid sharing state between threads."
+    },
+    {
+      "id": "java-medium-002",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "Explain the difference between `Callable` and `Runnable` interfaces.",
+      "answer": "`Runnable` has a `run()` method that doesn't return a value or throw checked exceptions. `Callable` has a `call()` method that can return a value and throw checked exceptions."
+    },
+    {
+      "id": "java-medium-003",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "What are the different ways to create a thread in Java?",
+      "answer": "1. Extending the `Thread` class and overriding its `run()` method. 2. Implementing the `Runnable` interface and passing it to a `Thread` constructor. 3. Using an `ExecutorService` to manage threads. 4. Using lambda expressions with `Runnable` or `Callable`. 5. Using the `CompletableFuture` API for asynchronous computations."
+    },
+    {
+      "id": "java-medium-004",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "What is the Singleton design pattern? How can you implement a thread-safe singleton in Java?",
+      "answer": "Singleton is a design pattern that ensures a class has only one instance and provides a global point of access to it. A thread-safe singleton can be implemented using: 1. Eager initialization, 2. Static block initialization, 3. Lazy initialization with double-checked locking, 4. Using an inner static class, or 5. Using an enum (recommended by Joshua Bloch)."
+    },
+    {
+      "id": "java-medium-005",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "What is the Observer pattern and how is it implemented in Java?",
+      "answer": "The Observer pattern defines a one-to-many dependency between objects, so that when one object changes state, all its dependents are notified and updated automatically. In Java, it's implemented using the `Observable` class and `Observer` interface, or more commonly now with event listeners or reactive programming libraries like RxJava."
+    },
+    {
+      "id": "java-medium-006",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "Explain the concept of weak references in Java.",
+      "answer": "Weak references are references that do not protect an object from garbage collection. If an object is only weakly reachable (only referenced through weak references), it will be collected at the next garbage collection cycle. They're implemented through the `WeakReference` class and are useful for implementing caches that don't prevent garbage collection."
+    },
+    {
+      "id": "java-medium-007",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "What is the difference between `HashMap` and `ConcurrentHashMap`?",
+      "answer": "`HashMap` is not thread-safe and provides better performance in single-threaded environments. `ConcurrentHashMap` is thread-safe for retrieval operations and allows concurrent access from multiple threads. It achieves this by dividing the map into segments and locking only segments rather than the whole map."
+    },
+    {
+      "id": "java-medium-008",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "What is the purpose of the `volatile` keyword in Java?",
+      "answer": "The `volatile` keyword guarantees visibility of changes to variables across threads. When a variable is declared volatile, reads and writes go directly to main memory, not to the CPU cache. It doesn't provide atomicity for compound operations (like i++) but ensures that if one thread updates a volatile variable, other threads will see the most recently written value."
+    },
+    {
+      "id": "java-medium-009",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "How does the `synchronized` keyword work in Java?",
+      "answer": "The `synchronized` keyword in Java is used to control access to critical sections of code or resources shared by multiple threads. When applied to a method or block, it ensures that only one thread can execute that section at a time, using the intrinsic lock (monitor) of the specified object. It provides both mutual exclusion and memory visibility guarantees."
+    },
+    {
+      "id": "java-medium-010",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "Explain the concept of the Java Memory Model.",
+      "answer": "The Java Memory Model (JMM) defines how threads interact through memory. It specifies the legal transformations that the JVM can perform on your code, establishes happens-before relationships (which determine when writes by one thread are visible to another), and guarantees atomicity of certain operations. JMM helps reason about visibility, atomicity, and ordering in concurrent programs."
+    },
+    {
+      "id": "java-medium-011",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "What is a CompletableFuture and how is it different from a Future?",
+      "answer": "`CompletableFuture` extends `Future` with methods for chaining, combining, or handling completion of asynchronous operations. Unlike `Future`, it allows composing asynchronous operations in a functional style, has explicit completion (complete/completeExceptionally), and doesn't require explicit blocking when retrieving results."
+    },
+    {
+      "id": "java-medium-012",
+      "type": "theory",
+      "difficulty": "Medium",
+      "question": "What is the Strategy pattern?",
+      "answer": "The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. It lets the algorithm vary independently from clients that use it. In Java, it's typically implemented by defining an interface for the strategy, creating concrete strategy classes, and using composition to select and use a specific strategy at runtime."
+    }
+  ],
+  "pagination": {
+    "pageSize": 10,
+    "totalQuestions": 32
+  },
+  "version": "1.0.0",
+  "lastUpdated": "2025-06-19"
+}
